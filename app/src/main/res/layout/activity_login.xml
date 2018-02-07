@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/dealzmealz_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/dealznmealz_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_below="@+id/dealzmealz_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="45dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Find the Deal on Your Favourite"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Restaurant"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="50dp">
+
+                <EditText
+                    android:id="@+id/emailInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Email Id/ Mobile/ User Id"
+                    android:textColorHint="@android:color/white"
+                    android:textColor="@android:color/white"
+                    android:inputType="text"
+                    android:drawableLeft="@drawable/email_icon"
+                    android:drawablePadding="15dp"
+                    android:backgroundTint="@android:color/white"
+                    android:paddingBottom="20dp"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    />
+
+                <EditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:hint="Password"
+                    android:textColorHint="@android:color/white"
+                    android:textColor="@android:color/white"
+                    android:drawableLeft="@drawable/password_lock"
+                    android:drawablePadding="15dp"
+                    android:backgroundTint="@android:color/white"
+                    android:paddingBottom="20dp"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"/>
+
+                <Button
+                    android:id="@+id/normalLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_button">
+                </Button>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot Password"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/register_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Register Now"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/fbLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fb_button" />
+
+                <Button
+                    android:id="@+id/googleLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gplus_button"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

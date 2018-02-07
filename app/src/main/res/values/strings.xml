@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">dealznmealz</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Hotel Details String-->
+    <string name="hotel_name">Tuli Imperial</string>
+    <string name="hotel_address">Ramdespeth, Nagpur</string>
+    <string name="hotel_open_now">Open Now - </string>
+    <string name="hotel_timing">11 AM to 11 PM</string>
+    <string name="hotel_review">29 reviews</string>
+    <string name="hotel_bookmarks">131 Bookmarks</string>
+    <string name="hotel_beenthere">52 Been there</string>
+    <string name="hotel_discount">Discount</string>
+    <string name="hotel_day">Mon</string>
+    <string name="hotel_date">May 1 2017 - </string>
+    <string name="hotel_daysecond">Sun</string>
+    <string name="hotel_datesecond">Dec 31 2017</string>
+    <string name="hotel_discountperc">Get 10% OFF</string>
+    <string name="hotel_menu">Menu</string>
+    <string name="hotel_photos">Photos</string>
+    <string name="hotel_completeaddress">Address - 37 Farm land central bazar road new ramdeshpeth nagar,Maharashtra</string>
+    <string name="hotel_maps">Maps and Direction</string>
+    <string name="Add_your_review">Add Your Review</string>
+    <string name="food">Food</string>
+    <string name="review_text">user can add their review for the service</string>
+</resources>

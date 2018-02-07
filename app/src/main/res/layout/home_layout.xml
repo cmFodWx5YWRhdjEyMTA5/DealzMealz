@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5"
+    tools:context="com.restaurant.dealznmealz.activities.HomeActivity">
+
+    <!-- Load the toolbar here -->
+    <include
+        layout="@layout/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.8"
+        android:orientation="vertical">
+
+        <include layout="@layout/viewpager_menu" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/offers_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1.4"
+        android:orientation="vertical">
+
+        <include layout="@layout/filter_search" />
+
+        <include layout="@layout/offers_layout" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/restaurant_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.8"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include layout="@layout/hotdealz_layout" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:onClick="onMostSearchClicked"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mostSearchedImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/restaurant_dish1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Most Searched Resto View More"
+                    android:textSize="7sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="2dp"
+                    android:background="@android:color/holo_blue_dark"
+                    android:layout_marginTop="1dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="onMostReviewsClicked"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mostReviewsImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/restaurant_dish1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Most Revieved Resto View More"
+                    android:textSize="7sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="2dp"
+                    android:background="@android:color/holo_green_light"
+                    android:layout_marginTop="1dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/latestRestroImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/restaurant_dish1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Latest Resto View More"
+                    android:textStyle="bold"
+                    android:textSize="10sp" />
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="2dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:layout_marginTop="1dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

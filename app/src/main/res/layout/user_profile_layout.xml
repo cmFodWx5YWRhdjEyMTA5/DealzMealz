@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.7"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HIMANI"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/user_edit"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/user_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7855252930"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="himaniroy@gmail.com"
+                android:textSize="15sp"
+                android:id="@+id/user_email"
+                android:layout_toRightOf="@+id/user_contact"
+                android:layout_marginLeft="25dp"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Account"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Addresses, Payments, Favorites, Referrals and Offers"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_marginTop="20dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/home_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_black_24dp"/>
+
+            <TextView
+                android:id="@+id/profile_tv"
+                android:layout_toRightOf="@+id/home_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile Details"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_right_black_24dp"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/past_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_history_24dp"/>
+
+            <TextView
+                android:id="@+id/past_tv"
+                android:layout_toRightOf="@+id/past_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Past Book"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_right_black_24dp"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/favorite_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite_24dp"/>
+
+            <TextView
+                android:id="@+id/favorite_tv"
+                android:layout_toRightOf="@+id/favorite_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favorites"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_right_black_24dp"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/referral_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_referral_24dp"/>
+
+            <TextView
+                android:id="@+id/referral_tv"
+                android:layout_toRightOf="@+id/referral_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Referrals"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_right_black_24dp"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/offers_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_offers_24dp"/>
+
+            <TextView
+                android:id="@+id/offers_tv"
+                android:layout_toRightOf="@+id/offers_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offers"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_right_black_24dp"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.7"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/user_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGOUT"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_logout_24dp"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

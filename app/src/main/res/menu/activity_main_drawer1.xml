@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_two_wheeler"
+            android:title="Two Wheeler" />
+        <item
+            android:id="@+id/nav_bar"
+            android:title="Four Wheeler" />
+    </group>
+
+</menu>

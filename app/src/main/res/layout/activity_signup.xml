@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/dealzmealz_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/dealznmealz_logo"
+        android:layout_gravity="center_horizontal">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Enter Name"
+        android:inputType="text"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:paddingBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/mobileNumInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Enter your mobile number"
+        android:inputType="number"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:paddingBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:paddingBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/birthDateInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Enter birthdate in dd/mm/yyyy format"
+        android:inputType="date"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:paddingBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/userNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Enter preferred username"
+        android:inputType="text"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:paddingBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Password"
+        android:inputType="textWebPassword"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:paddingBottom="15dp"/>
+
+    <Button
+        android:id="@+id/registerMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Register Me"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_orange_dark"/>
+    </LinearLayout>
+
+
+</LinearLayout>

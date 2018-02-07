@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorPink</item>
+    </style>
+
+    <!-- ToolBar -->
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Widget.MaterialRatingBar.RatingBar" parent="android:Widget.RatingBar">
+        <!--
+        Disabled for correct behavior on Android 4.x, see
+        https://github.com/android/platform_frameworks_base/commit/911743652b597057a1bd7ef8a921e9ff8dce0f4a#diff-149f45c5ff2d3185bb79688ba17bc432L536
+        <item name="android:progressDrawable">@null</item>
+        -->
+        <item name="android:indeterminateDrawable">@null</item>
+        <item name="android:minHeight">36dp</item>
+        <item name="android:maxHeight">36dp</item>
+    </style>
+
+    <style name="Widget.MaterialRatingBar.RatingBar.Small">
+        <item name="android:minHeight">16dp</item>
+        <item name="android:maxHeight">16dp</item>
+    </style>
+
+    <style name="Widget.MaterialRatingBar.RatingBar.Indicator">
+        <item name="android:isIndicator">true</item>
+    </style>
+
+    <style name="Widget.MaterialRatingBar.RatingBar.Indicator.Small">
+        <item name="android:minHeight">16dp</item>
+        <item name="android:maxHeight">16dp</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+</resources>
