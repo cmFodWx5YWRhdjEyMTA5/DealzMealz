@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText emailInput;
     private EditText passwordInput;
     private TextView registerNow;
+    private ProgressBar progressBar;
 
     private RetrofitNetworkManager retrofitNetworkManager = RetrofitNetworkManager.getNetworkManager();
     private RetrofitNetworkManagerService retrofitNetworkManagerService = retrofitNetworkManager.getNetworkManagerService();
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
         registerNow = findViewById(R.id.register_now);
+        progressBar = findViewById(R.id.progress_bar);
 
         normalLogin.setOnClickListener(this);
         registerNow.setOnClickListener(this);
@@ -66,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (userName.length() == 0 || passWord.length() == 0) {
                     Toast.makeText(LoginActivity.this, "Enter valid credentials", Toast.LENGTH_LONG).show();
                 } else {
+                    progressBar.setVisibility(View.VISIBLE);
                     checkLoginData(userName, passWord);
 //                navigateToHomeScreen();
                 }
@@ -90,7 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onResponse(Call<DealzMealzUserDetails> call, Response<DealzMealzUserDetails> response) {
                 Log.v(TAG, "Response details : "+response.body());
                 DealzMealzUserDetails userDetails = response.body();
-
+                progressBar.setVisibility(View.GONE);
                 if (userDetails.getMessage()!= null && userDetails.getMessage().equals("Please enter valid credentials.")) {
                     Toast.makeText(LoginActivity.this, "Please enter valid credentials.", Toast.LENGTH_LONG).show();
                 } else {

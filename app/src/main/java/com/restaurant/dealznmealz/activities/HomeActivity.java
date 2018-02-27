@@ -1,6 +1,9 @@
 package com.restaurant.dealznmealz.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -11,9 +14,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.adapter.HotDealzRecyclerViewAdapter;
@@ -23,6 +34,7 @@ import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.model.DiscountedHotels;
 import com.restaurant.dealznmealz.model.HotDealzOffers;
 import com.restaurant.dealznmealz.model.PaidBanners;
+import com.restaurant.dealznmealz.model.SearchLocationModel;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
 import com.squareup.picasso.Picasso;
@@ -63,6 +75,10 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
     final long DELAY_MS = 500;//delay in milliseconds before task is to be executed
     final long PERIOD_MS = 3000; // time in milliseconds between successive task executions.
 
+    private TextView searchByCategoryText;
+    private TextView searchByPriceText;
+    private TextView searchByLocationText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +91,7 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         setUpOffersRecyclerView();
         setUpHotDealzView();
         loadBottomTabImages();
+        setUpSearchViewItems();
     }
 
     private void setUpViewPagerMenu() {
@@ -231,5 +248,72 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
                 handler.post(Update);
             }
         }, DELAY_MS, PERIOD_MS);
+    }
+
+    private void setUpSearchViewItems() {
+        searchByCategoryText = findViewById(R.id.search_category_tv);
+        searchByPriceText = findViewById(R.id.search_price_tv);
+        searchByLocationText = findViewById(R.id.search_location_tv);
+
+        searchByLocationText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchList(view);
+            }
+        });
+
+    }
+
+    private void searchList(final View v) {
+
+        String searchListUrl = retrofitNetworkManagerService.getSearchLocationData().request().url().toString();
+        Log.v(TAG, "Search List Url : "+searchListUrl);
+        Call<List<SearchLocationModel>> hotDealzUrlCall = retrofitNetworkManagerService.getSearchLocationData();
+        hotDealzUrlCall.enqueue(new Callback<List<SearchLocationModel>>() {
+            @Override
+            public void onResponse(Call<List<SearchLocationModel>> call, Response<List<SearchLocationModel>> response) {
+                Log.v(TAG, "Response details : "+response.body());
+                List<SearchLocationModel> hotDealzOffersList = response.body();
+                ArrayList<String> searchLocDataList = new ArrayList<>();
+                for (SearchLocationModel dataModel: hotDealzOffersList) {
+                    searchLocDataList.add(dataModel.getArea());
+                }
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(mActivity, android.R.layout.simple_list_item_1);
+                arrayAdapter.addAll(searchLocDataList);
+                PopupWindow popupWindow = popupWindowDialog(arrayAdapter);
+                popupWindow.showAsDropDown(v, -5,0 );
+            }
+
+            @Override
+            public void onFailure(Call<List<SearchLocationModel>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public PopupWindow popupWindowDialog(ArrayAdapter<String> dataSet) {
+
+        // initialize a pop up window type
+        PopupWindow popupWindow = new PopupWindow(this);
+
+        // the drop down list is a list view
+        ListView listViewDogs = new ListView(this);
+
+        // set our adapter and pass our pop up window contents
+        listViewDogs.setAdapter(dataSet);
+
+        // set the item click listener
+//        listViewDogs.setOnItemClickListener(new DogsDropdownOnItemClickListener());
+
+        // some other visual settings
+        popupWindow.setFocusable(true);
+        popupWindow.setWidth(400);
+        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+
+        // set the list view as pop up window content
+        popupWindow.setContentView(listViewDogs);
+        return popupWindow;
     }
 }

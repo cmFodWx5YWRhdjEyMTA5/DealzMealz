@@ -5,6 +5,7 @@ import com.restaurant.dealznmealz.model.DiscountedHotels;
 import com.restaurant.dealznmealz.model.HotDealzOffers;
 import com.restaurant.dealznmealz.model.PaidBanners;
 import com.restaurant.dealznmealz.model.RegistrationResponse;
+import com.restaurant.dealznmealz.model.SearchLocationModel;
 
 import java.util.List;
 import java.util.Map;
@@ -46,5 +47,8 @@ public interface RetrofitNetworkManagerService {
 
     @GET("?discount=1")
     Call<List<DiscountedHotels>> getDiscountedHotelsList();
+
+    @GET("?calllocation=1")
+    Call<List<SearchLocationModel>> getSearchLocationData();
 
 }

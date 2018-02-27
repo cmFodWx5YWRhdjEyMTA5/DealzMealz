@@ -49,56 +49,67 @@
                 android:textColor="@android:color/white"
                 android:textSize="25sp" />
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="50dp">
+                android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/emailInput"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Email Id/ Mobile/ User Id"
-                    android:textColorHint="@android:color/white"
-                    android:textColor="@android:color/white"
-                    android:inputType="text"
-                    android:drawableLeft="@drawable/email_icon"
-                    android:drawablePadding="15dp"
-                    android:backgroundTint="@android:color/white"
-                    android:paddingBottom="20dp"
-                    android:imeOptions="actionNext"
-                    android:maxLines="1"
-                    />
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/passwordInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:hint="Password"
-                    android:textColorHint="@android:color/white"
-                    android:textColor="@android:color/white"
-                    android:drawableLeft="@drawable/password_lock"
-                    android:drawablePadding="15dp"
-                    android:backgroundTint="@android:color/white"
-                    android:paddingBottom="20dp"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:maxLines="1"/>
+                    <EditText
+                        android:id="@+id/emailInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@android:color/white"
+                        android:drawableLeft="@drawable/email_icon"
+                        android:drawablePadding="15dp"
+                        android:hint="Email Id/ Mobile/ User Id"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingBottom="20dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
 
-                <Button
-                    android:id="@+id/normalLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/login_button">
-                </Button>
+                    <EditText
+                        android:id="@+id/passwordInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="@android:color/white"
+                        android:drawableLeft="@drawable/password_lock"
+                        android:drawablePadding="15dp"
+                        android:hint="Password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingBottom="20dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/normalLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/login_button"></Button>
 
 
-            </LinearLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
+            </FrameLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

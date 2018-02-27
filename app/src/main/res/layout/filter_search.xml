@@ -3,20 +3,11 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:weightSum="4">
+    android:weightSum="4"
+    android:id="@+id/parentSearchLayout">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:text="Search"
-        android:textSize="10sp"
-        android:background="@drawable/custom_rectangle"
-        android:drawableRight="@android:drawable/ic_menu_search"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:paddingLeft="5dp"/>
-
-    <TextView
+        android:id="@+id/search_category_tv"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="By Category"
@@ -28,6 +19,7 @@
         android:paddingLeft="5dp"/>
 
     <TextView
+        android:id="@+id/search_price_tv"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="By Price"
@@ -39,6 +31,7 @@
         android:paddingLeft="5dp"/>
 
     <TextView
+        android:id="@+id/search_location_tv"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="By Location"
@@ -47,6 +40,18 @@
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
+        android:paddingLeft="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Search"
+        android:textSize="10sp"
+        android:background="@drawable/custom_rectangle"
+        android:drawableRight="@android:drawable/ic_menu_search"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
         android:paddingLeft="5dp"/>
 
 </LinearLayout>
