@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.model.RestaurantDetails;
 import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ashis on 01-10-2017.
@@ -19,23 +21,22 @@ import java.util.ArrayList;
 public class RestaurantListRecyclerAdapter extends RecyclerView.Adapter<RestaurantViewHolder> {
 
     private Context mContext;
-    private ArrayList<RestaurantDetails> restaurantDetailsArrayList;
+    private List<ListingModel> listingModelList;
 
     public RestaurantListRecyclerAdapter(Context context) {
         mContext = context;
     }
 
-    public RestaurantListRecyclerAdapter(ArrayList<RestaurantDetails> restaurantDetailsArrayList, Context context) {
-        this.restaurantDetailsArrayList = restaurantDetailsArrayList;
-        mContext = context;
+    public void setRestaurntListData(List<ListingModel> list) {
+        this.listingModelList = list;
     }
 
     @Override
     public RestaurantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_hotel_list_item, parent, false);
-        RestaurantViewHolder garnetViewHolder = new RestaurantViewHolder(view, mContext);
-        garnetViewHolder.setGarageListDetails(restaurantDetailsArrayList);
-        return garnetViewHolder;
+        RestaurantViewHolder restaurantViewHolder = new RestaurantViewHolder(view, mContext);
+        restaurantViewHolder.setListingData(listingModelList);
+        return restaurantViewHolder;
     }
 
     @Override
@@ -45,8 +46,6 @@ public class RestaurantListRecyclerAdapter extends RecyclerView.Adapter<Restaura
 
     @Override
     public int getItemCount() {
-
-//        return restaurantDetailsArrayList.size();
-        return 6;
+        return listingModelList.size();
     }
 }

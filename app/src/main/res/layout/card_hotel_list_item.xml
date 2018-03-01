@@ -48,7 +48,7 @@
                 android:textSize="10sp"
                 android:textStyle="bold"/>
 
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/hotel_contact"
@@ -57,7 +57,7 @@
                 android:text="Phone:0712 666 0288"
                 android:maxLines="3"
                 android:textSize="10sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"/>-->
 
         </RelativeLayout>
 
@@ -102,13 +102,13 @@
         android:gravity="center"
         android:layout_marginRight="5dp">
 
-    <TextView
+<!--    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/hotel_reviews"
         android:text="Reviews"
         android:textSize="10sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"/>-->
 
         <me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:layout_width="wrap_content"

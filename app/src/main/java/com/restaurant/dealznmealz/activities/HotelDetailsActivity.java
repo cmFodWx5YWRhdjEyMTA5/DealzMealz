@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.restaurant.dealznmealz.R;
-import com.restaurant.dealznmealz.fragments.MostSearchedRestaurantListFragment;
+import com.restaurant.dealznmealz.fragments.RestaurantListFragment;
 import com.restaurant.dealznmealz.fragments.PaidHotelDetailsFragment;
 
 public class HotelDetailsActivity extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class HotelDetailsActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch(hotelDetailsIdentifier) {
             case "FREE":
-                fragmentTransaction.add(R.id.hotel_details_layout, new MostSearchedRestaurantListFragment(), "SearchFragment");
+                fragmentTransaction.add(R.id.hotel_details_layout, new RestaurantListFragment(), "SearchFragment");
                 break;
 
             case "PAID":

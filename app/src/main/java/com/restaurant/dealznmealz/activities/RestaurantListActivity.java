@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.fragments.MostReviewsRestaurantListFragment;
-import com.restaurant.dealznmealz.fragments.MostSearchedRestaurantListFragment;
+import com.restaurant.dealznmealz.fragments.RestaurantListFragment;
 
 /**
  * Created by ashis on 21-09-2017.
@@ -18,6 +18,8 @@ import com.restaurant.dealznmealz.fragments.MostSearchedRestaurantListFragment;
 public class RestaurantListActivity extends DealznmealzBaseActivity {
 
     private String restaurantListIdentifier;
+    private String fragmentTitleKey = "FRAGMENT_TITLE_KEY";
+    private String fragmentIdentifierKey = "FRAGMENT_IDENTIFIER";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,24 +35,33 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_left_menu_24dp);
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setTitle("dealznmealz");
+        ab.setDisplayHomeAsUpEnabled(false);
+        ab.setDisplayShowTitleEnabled(false);
     }
 
     private void setUpFragements(String restaurantListIdentifier) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        RestaurantListFragment fragment = new RestaurantListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(fragmentTitleKey, "Most Searched Restaurants");
+        bundle.putString(fragmentIdentifierKey, restaurantListIdentifier);
         switch(restaurantListIdentifier) {
             case "SEARCH":
-                fragmentTransaction.add(R.id.restaurant_list_layout, new MostSearchedRestaurantListFragment(), "SearchFragment");
+                bundle.putString(fragmentTitleKey, "Most Searched Restaurants");
+                fragment.setArguments(bundle);
                 break;
 
             case "REVIEWS":
-                fragmentTransaction.add(R.id.restaurant_list_layout, new MostReviewsRestaurantListFragment(), "ReviewsFragment");
+                bundle.putString(fragmentTitleKey, "Most Reviewed Restaurants");
+                fragment.setArguments(bundle);
                 break;
-        }
 
+            case "LATEST":
+                bundle.putString(fragmentTitleKey, "Latest Restaurants");
+                fragment.setArguments(bundle);
+        }
+        fragmentTransaction.add(R.id.restaurant_list_layout, fragment, "RestaurantListFragment");
         fragmentTransaction.commit();
     }
 }

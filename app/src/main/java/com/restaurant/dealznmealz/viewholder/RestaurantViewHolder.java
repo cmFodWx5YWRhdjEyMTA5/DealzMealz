@@ -14,9 +14,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.model.RestaurantDetails;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ashis on 01-10-2017.
@@ -34,7 +37,9 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
     private MapView hotelMapView;
     private GoogleMap map;
 
-    private NamedLocation locData = new NamedLocation("Nagpur", new LatLng(21.1458, 79.0882));
+    private List<ListingModel> listingModelList;
+
+    private NamedLocation locData;
 
     /**
      * Location represented by a position ({@link com.google.android.gms.maps.model.LatLng} and a
@@ -42,12 +47,9 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
      */
     private class NamedLocation {
 
-        public final String name;
-
         public final LatLng location;
 
-        NamedLocation(String name, LatLng location) {
-            this.name = name;
+        NamedLocation(LatLng location) {
             this.location = location;
         }
     }
@@ -63,15 +65,25 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
         hotelImageView = (ImageView) itemView.findViewById(R.id.hotel_image_view);
         hotelNameTextView = (TextView) itemView.findViewById(R.id.hotel_name);
         hotelAddressTextView = (TextView) itemView.findViewById(R.id.hotel_address);
-        hotelPhoneNumberTextView = (TextView) itemView.findViewById(R.id.hotel_contact);
+//        hotelPhoneNumberTextView = (TextView) itemView.findViewById(R.id.hotel_contact);
         hotelReviewsCount = (TextView) itemView.findViewById(R.id.hotel_reviews_count);
         hotelMapView = (MapView) itemView.findViewById(R.id.hotel_map_view);
     }
 
-    public void setGarageListDetails(ArrayList<RestaurantDetails> garageDetailsList) {
+    public void setListingData(List<ListingModel> listData) {
+        listingModelList = listData;
     }
 
     public void handleOnBindViewHolder(int position) {
+        ListingModel listingModel = listingModelList.get(position);
+
+        String imageUrl = "https://dealznmealz.com/" + listingModel.getImage();
+        Picasso.with(mContext).load(imageUrl).into(hotelImageView);
+        hotelNameTextView.setText(listingModel.getName());
+        hotelAddressTextView.setText(listingModel.getAddress());
+        hotelReviewsCount.setText(listingModel.getRating());
+        ListingModel.Location loc = listingModel.getLocationData();
+        locData = new NamedLocation(new LatLng(loc.getLatitude(), loc.getLongitude()));
 
     }
 

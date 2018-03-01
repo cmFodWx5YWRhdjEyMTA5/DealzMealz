@@ -30,6 +30,7 @@ import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.adapter.HotDealzRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.OffersRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
+import com.restaurant.dealznmealz.model.CategoryModel;
 import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.model.DiscountedHotels;
 import com.restaurant.dealznmealz.model.HotDealzOffers;
@@ -106,7 +107,7 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         setSupportActionBar(tb);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ab.setDisplayShowTitleEnabled(false);
     }
 
     private void setUpOffersRecyclerView() {
@@ -135,6 +136,10 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
     public void onMostReviewsClicked(View view) {
         navigateToResataurantListActivity("REVIEWS");
+    }
+
+    public void onLatestRestroClicked(View view) {
+        navigateToResataurantListActivity("LATEST");
     }
 
     private void navigateToResataurantListActivity(String restaurantListIdentifier) {
@@ -255,6 +260,12 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         searchByPriceText = findViewById(R.id.search_price_tv);
         searchByLocationText = findViewById(R.id.search_location_tv);
 
+        searchByCategoryText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchCategoryData(view);
+            }
+        });
         searchByLocationText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -262,6 +273,34 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
             }
         });
 
+    }
+
+    private void fetchCategoryData(final View v) {
+
+        String searchListUrl = retrofitNetworkManagerService.getCategoryData().request().url().toString();
+        Log.v(TAG, "Category List Url : "+searchListUrl);
+        Call<List<CategoryModel>> hotDealzUrlCall = retrofitNetworkManagerService.getCategoryData();
+        hotDealzUrlCall.enqueue(new Callback<List<CategoryModel>>() {
+            @Override
+            public void onResponse(Call<List<CategoryModel>> call, Response<List<CategoryModel>> response) {
+                Log.v(TAG, "Response details : "+response.body());
+                List<CategoryModel> hotDealzOffersList = response.body();
+                ArrayList<String> categoryListData = new ArrayList<>();
+                for (CategoryModel dataModel: hotDealzOffersList) {
+                    categoryListData.add(dataModel.getCategoryName());
+                }
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(mActivity, android.R.layout.simple_list_item_1);
+                arrayAdapter.addAll(categoryListData);
+                PopupWindow popupWindow = popupWindowDialog(arrayAdapter);
+                popupWindow.showAsDropDown(v, -5,0 );
+            }
+
+            @Override
+            public void onFailure(Call<List<CategoryModel>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void searchList(final View v) {

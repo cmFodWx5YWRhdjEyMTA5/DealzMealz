@@ -1,8 +1,10 @@
 package com.restaurant.dealznmealz.network;
 
+import com.restaurant.dealznmealz.model.CategoryModel;
 import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.model.DiscountedHotels;
 import com.restaurant.dealznmealz.model.HotDealzOffers;
+import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.model.PaidBanners;
 import com.restaurant.dealznmealz.model.RegistrationResponse;
 import com.restaurant.dealznmealz.model.SearchLocationModel;
@@ -50,5 +52,17 @@ public interface RetrofitNetworkManagerService {
 
     @GET("?calllocation=1")
     Call<List<SearchLocationModel>> getSearchLocationData();
+
+    @GET("?callcategory=1")
+    Call<List<CategoryModel>> getCategoryData();
+
+    @GET("?searched=1")
+    Call<List<ListingModel>> getMostSearchedListingData();
+
+    @GET("?reviewed=1")
+    Call<List<ListingModel>> getMostReviewedListingData();
+
+    @GET("?latest=1")
+    Call<List<ListingModel>> getLatestListingData();
 
 }
