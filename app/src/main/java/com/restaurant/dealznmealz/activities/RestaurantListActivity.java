@@ -20,6 +20,8 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
     private String restaurantListIdentifier;
     private String fragmentTitleKey = "FRAGMENT_TITLE_KEY";
     private String fragmentIdentifierKey = "FRAGMENT_IDENTIFIER";
+    private int offerId;
+    private String hotDealzImgUrl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +29,11 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
         setContentView(R.layout.activity_restaurant_list);
 
         restaurantListIdentifier = getIntent().getStringExtra("FRAGMENT_IDENTIFIER");
+        if (restaurantListIdentifier.equals("HOTDEALZ")) {
+            offerId = getIntent().getIntExtra("OFFER_ID", 0);
+            hotDealzImgUrl = getIntent().getStringExtra("OFFER_IMG_URL");
+        }
+
         setToolBar();
         setUpFragements(restaurantListIdentifier);
     }
@@ -60,6 +67,13 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
             case "LATEST":
                 bundle.putString(fragmentTitleKey, "Latest Restaurants");
                 fragment.setArguments(bundle);
+
+            case "HOTDEALZ":
+                bundle.putString(fragmentTitleKey, "HOT Dealz Offer");
+                bundle.putInt("OFFER_ID", offerId);
+                bundle.putString("OFFER_IMG_URL", hotDealzImgUrl);
+                fragment.setArguments(bundle);
+                break;
         }
         fragmentTransaction.add(R.id.restaurant_list_layout, fragment, "RestaurantListFragment");
         fragmentTransaction.commit();

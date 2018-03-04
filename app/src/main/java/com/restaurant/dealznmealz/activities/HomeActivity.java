@@ -30,6 +30,8 @@ import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.adapter.HotDealzRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.OffersRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
+import com.restaurant.dealznmealz.interfaces.RecyclerViewClickListener;
+import com.restaurant.dealznmealz.listener.RecyclerViewTouchListener;
 import com.restaurant.dealznmealz.model.CategoryModel;
 import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.model.DiscountedHotels;
@@ -149,6 +151,15 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
     }
 
+    private void navigateToResataurantListActivity(String restaurantListIdentifier, int offerId, String imageUrl) {
+        Intent i = new Intent(this, RestaurantListActivity.class);
+        i.putExtra("FRAGMENT_IDENTIFIER", restaurantListIdentifier);
+        i.putExtra("OFFER_ID", offerId);
+        i.putExtra("OFFER_IMG_URL", imageUrl);
+        startActivity(i);
+
+    }
+
     @Override
     public void onItemClick(View view, int position) {
         navigateToHotelDetailsActivity("PAID");
@@ -162,12 +173,12 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
     private void loadPaidBannerData() {
         String bannerUrl = retrofitNetworkManagerService.getPaidBannerList().request().url().toString();
-        Log.v(TAG, "Banner URL : "+bannerUrl);
+        Log.v(TAG, "Banner URL : " + bannerUrl);
         Call<List<PaidBanners>> userDetailsCall = retrofitNetworkManagerService.getPaidBannerList();
         userDetailsCall.enqueue(new Callback<List<PaidBanners>>() {
             @Override
             public void onResponse(Call<List<PaidBanners>> call, Response<List<PaidBanners>> response) {
-                Log.v(TAG, "Response details : "+response.body());
+                Log.v(TAG, "Response details : " + response.body());
                 List<PaidBanners> paidBannerList = response.body();
                 paidBannersAdapter.setPaidBannersListData(paidBannerList);
                 viewPager.setAdapter(paidBannersAdapter);
@@ -183,12 +194,12 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
     private void loadDiscountedHotelsData() {
         String discountsUrl = retrofitNetworkManagerService.getDiscountedHotelsList().request().url().toString();
-        Log.v(TAG, "Discounts URL : "+discountsUrl);
+        Log.v(TAG, "Discounts URL : " + discountsUrl);
         Call<List<DiscountedHotels>> disCountsUrlCall = retrofitNetworkManagerService.getDiscountedHotelsList();
         disCountsUrlCall.enqueue(new Callback<List<DiscountedHotels>>() {
             @Override
             public void onResponse(Call<List<DiscountedHotels>> call, Response<List<DiscountedHotels>> response) {
-                Log.v(TAG, "Response details : "+response.body());
+                Log.v(TAG, "Response details : " + response.body());
                 List<DiscountedHotels> discountedHotelsList = response.body();
 
                 offersRecyclerViewAdapter.setOffersData(discountedHotelsList);
@@ -214,16 +225,17 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
     private void loadHotDealzData() {
         String hotDealzUrl = retrofitNetworkManagerService.getHotDealzList().request().url().toString();
-        Log.v(TAG, "HOT DEALZ URL : "+hotDealzUrl);
+        Log.v(TAG, "HOT DEALZ URL : " + hotDealzUrl);
         Call<List<HotDealzOffers>> hotDealzUrlCall = retrofitNetworkManagerService.getHotDealzList();
         hotDealzUrlCall.enqueue(new Callback<List<HotDealzOffers>>() {
             @Override
             public void onResponse(Call<List<HotDealzOffers>> call, Response<List<HotDealzOffers>> response) {
-                Log.v(TAG, "Response details : "+response.body());
+                Log.v(TAG, "Response details : " + response.body());
                 List<HotDealzOffers> hotDealzOffersList = response.body();
 
                 hotDealzRecyclerViewAdapter.setHotDealzOffersList(hotDealzOffersList);
                 hotDealzRecyclerView.setAdapter(hotDealzRecyclerViewAdapter);
+                addClickListener(hotDealzOffersList);
             }
 
             @Override
@@ -231,6 +243,22 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
             }
         });
+    }
+
+    private void addClickListener(final List<HotDealzOffers> hotDealzOffersList) {
+        hotDealzRecyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(this, hotDealzRecyclerView, new RecyclerViewClickListener() {
+
+            @Override
+            public void onClick(View view, int position) {
+                String hotDealzImgUrl = "https://dealznmealz.com/" + hotDealzOffersList.get(position).getHotDealzImageUrl();
+                navigateToResataurantListActivity("HOTDEALZ", hotDealzOffersList.get(position).getHotDealzOfferId(), hotDealzImgUrl);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 
     private void animateViewPager() {
@@ -246,7 +274,7 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         };
 
         timer = new Timer(); // This will create a new Thread
-        timer .schedule(new TimerTask() { // task to be scheduled
+        timer.schedule(new TimerTask() { // task to be scheduled
 
             @Override
             public void run() {
@@ -278,22 +306,22 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
     private void fetchCategoryData(final View v) {
 
         String searchListUrl = retrofitNetworkManagerService.getCategoryData().request().url().toString();
-        Log.v(TAG, "Category List Url : "+searchListUrl);
+        Log.v(TAG, "Category List Url : " + searchListUrl);
         Call<List<CategoryModel>> hotDealzUrlCall = retrofitNetworkManagerService.getCategoryData();
         hotDealzUrlCall.enqueue(new Callback<List<CategoryModel>>() {
             @Override
             public void onResponse(Call<List<CategoryModel>> call, Response<List<CategoryModel>> response) {
-                Log.v(TAG, "Response details : "+response.body());
+                Log.v(TAG, "Response details : " + response.body());
                 List<CategoryModel> hotDealzOffersList = response.body();
                 ArrayList<String> categoryListData = new ArrayList<>();
-                for (CategoryModel dataModel: hotDealzOffersList) {
+                for (CategoryModel dataModel : hotDealzOffersList) {
                     categoryListData.add(dataModel.getCategoryName());
                 }
 
                 ArrayAdapter arrayAdapter = new ArrayAdapter(mActivity, android.R.layout.simple_list_item_1);
                 arrayAdapter.addAll(categoryListData);
                 PopupWindow popupWindow = popupWindowDialog(arrayAdapter);
-                popupWindow.showAsDropDown(v, -5,0 );
+                popupWindow.showAsDropDown(v, -5, 0);
             }
 
             @Override
@@ -306,22 +334,22 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
     private void searchList(final View v) {
 
         String searchListUrl = retrofitNetworkManagerService.getSearchLocationData().request().url().toString();
-        Log.v(TAG, "Search List Url : "+searchListUrl);
+        Log.v(TAG, "Search List Url : " + searchListUrl);
         Call<List<SearchLocationModel>> hotDealzUrlCall = retrofitNetworkManagerService.getSearchLocationData();
         hotDealzUrlCall.enqueue(new Callback<List<SearchLocationModel>>() {
             @Override
             public void onResponse(Call<List<SearchLocationModel>> call, Response<List<SearchLocationModel>> response) {
-                Log.v(TAG, "Response details : "+response.body());
+                Log.v(TAG, "Response details : " + response.body());
                 List<SearchLocationModel> hotDealzOffersList = response.body();
                 ArrayList<String> searchLocDataList = new ArrayList<>();
-                for (SearchLocationModel dataModel: hotDealzOffersList) {
+                for (SearchLocationModel dataModel : hotDealzOffersList) {
                     searchLocDataList.add(dataModel.getArea());
                 }
 
                 ArrayAdapter arrayAdapter = new ArrayAdapter(mActivity, android.R.layout.simple_list_item_1);
                 arrayAdapter.addAll(searchLocDataList);
                 PopupWindow popupWindow = popupWindowDialog(arrayAdapter);
-                popupWindow.showAsDropDown(v, -5,0 );
+                popupWindow.showAsDropDown(v, -5, 0);
             }
 
             @Override

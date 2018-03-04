@@ -65,4 +65,7 @@ public interface RetrofitNetworkManagerService {
     @GET("?latest=1")
     Call<List<ListingModel>> getLatestListingData();
 
+    @GET("?latest=1")
+    Call<List<ListingModel>> getHotDealzListingData(@Query("offid") int offerId);
+
 }

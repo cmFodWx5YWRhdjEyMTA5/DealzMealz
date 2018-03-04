@@ -56,6 +56,9 @@ public class RestaurantListFragment extends Fragment {
 
     private String TAG = RestaurantListFragment.class.getSimpleName();
 
+    private int offerId;
+    private String hotDealzImgUrl;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,11 @@ public class RestaurantListFragment extends Fragment {
         mContext = mActivity;
         fragmentTitle = getArguments().getString(fragmentTitleKey);
         fragmentIdentifier = getArguments().getString(fragmentIdentifierKey);
+
+        if (fragmentIdentifier.equals("HOTDEALZ")) {
+            offerId = getArguments().getInt("OFFER_ID", 0);
+            hotDealzImgUrl = getArguments().getString("OFFER_IMG_URL");
+        }
     }
 
     @Nullable
@@ -93,6 +101,11 @@ public class RestaurantListFragment extends Fragment {
             case "LATEST":
                 Picasso.with(mActivity).load("https://dealznmealz.com/image/home4.jpg").into(bannerImage);
                 break;
+
+            case "HOTDEALZ":
+                Log.v(TAG, "Hot Dealz img url :- "+hotDealzImgUrl);
+                Picasso.with(mActivity).load(hotDealzImgUrl).into(bannerImage);
+                break;
         }
     }
 
@@ -122,13 +135,24 @@ public class RestaurantListFragment extends Fragment {
                 break;
 
             case "REVIEWS":
+                String mostReviewedUrl = retrofitNetworkManagerService.getMostReviewedListingData().request().url().toString();
+                Log.v(TAG, "Most Reviewed Data Call : "+mostReviewedUrl);
                 Call<List<ListingModel>> mostReviewedDataCall = retrofitNetworkManagerService.getMostReviewedListingData();
                 loadListingData(mostReviewedDataCall);
                 break;
 
             case "LATEST":
+                String latestRestaurantsUrl = retrofitNetworkManagerService.getLatestListingData().request().url().toString();
+                Log.v(TAG, "Latest Restaurant Data Call : "+latestRestaurantsUrl);
                 Call<List<ListingModel>> latestDataCall = retrofitNetworkManagerService.getLatestListingData();
                 loadListingData(latestDataCall);
+                break;
+
+            case "HOTDEALZ":
+                String hotDealzUrlCall = retrofitNetworkManagerService.getHotDealzListingData(offerId).request().url().toString();
+                Log.v(TAG, "Latest Restaurant Data Call : "+hotDealzUrlCall);
+                Call<List<ListingModel>> hotdealzDataCall = retrofitNetworkManagerService.getHotDealzListingData(offerId);
+                loadListingData(hotdealzDataCall);
                 break;
         }
     }
