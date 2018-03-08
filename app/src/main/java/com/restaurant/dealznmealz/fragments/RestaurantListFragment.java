@@ -59,6 +59,8 @@ public class RestaurantListFragment extends Fragment {
     private int offerId;
     private String hotDealzImgUrl;
 
+    private int discId;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,8 @@ public class RestaurantListFragment extends Fragment {
         if (fragmentIdentifier.equals("HOTDEALZ")) {
             offerId = getArguments().getInt("OFFER_ID", 0);
             hotDealzImgUrl = getArguments().getString("OFFER_IMG_URL");
+        } else if (fragmentIdentifier.equals("DISCOUNTEDLIST")) {
+            discId = getArguments().getInt("DISC_ID", 0);
         }
     }
 
@@ -153,6 +157,13 @@ public class RestaurantListFragment extends Fragment {
                 Log.v(TAG, "Latest Restaurant Data Call : "+hotDealzUrlCall);
                 Call<List<ListingModel>> hotdealzDataCall = retrofitNetworkManagerService.getHotDealzListingData(offerId);
                 loadListingData(hotdealzDataCall);
+                break;
+
+            case "DISCOUNTEDLIST":
+                String discountedListUrlCall = retrofitNetworkManagerService.getDiscountListingData(discId).request().url().toString();
+                Log.v(TAG, "Discounted Restaurant Data Call : "+discountedListUrlCall);
+                Call<List<ListingModel>> discountedDataCall = retrofitNetworkManagerService.getDiscountListingData(discId);
+                loadListingData(discountedDataCall);
                 break;
         }
     }

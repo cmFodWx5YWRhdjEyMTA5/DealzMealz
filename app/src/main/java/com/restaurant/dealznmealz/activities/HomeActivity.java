@@ -82,6 +82,8 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
     private TextView searchByPriceText;
     private TextView searchByLocationText;
 
+    private List<DiscountedHotels> discountedHotelsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,12 +159,22 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         i.putExtra("OFFER_ID", offerId);
         i.putExtra("OFFER_IMG_URL", imageUrl);
         startActivity(i);
+    }
+
+    private void navigateToResataurantListActivity(String restaurantListIdentifier, int discId) {
+        Intent i = new Intent(this, RestaurantListActivity.class);
+        i.putExtra("FRAGMENT_IDENTIFIER", restaurantListIdentifier);
+        i.putExtra("DISC_ID", discId);
+        startActivity(i);
 
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        navigateToHotelDetailsActivity("PAID");
+
+//        navigateToHotelDetailsActivity("PAID");
+        navigateToResataurantListActivity("DISCOUNTEDLIST", discountedHotelsList.get(position).getDiscId());
+
     }
 
     private void navigateToHotelDetailsActivity(String hotelDetailsIdentifier) {
@@ -200,7 +212,7 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
             @Override
             public void onResponse(Call<List<DiscountedHotels>> call, Response<List<DiscountedHotels>> response) {
                 Log.v(TAG, "Response details : " + response.body());
-                List<DiscountedHotels> discountedHotelsList = response.body();
+                discountedHotelsList = response.body();
 
                 offersRecyclerViewAdapter.setOffersData(discountedHotelsList);
                 offersRecyclerView.setAdapter(offersRecyclerViewAdapter);
