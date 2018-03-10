@@ -60,6 +60,7 @@ public class RestaurantListFragment extends Fragment {
     private String hotDealzImgUrl;
 
     private int discId;
+    private String searchText;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +75,8 @@ public class RestaurantListFragment extends Fragment {
             hotDealzImgUrl = getArguments().getString("OFFER_IMG_URL");
         } else if (fragmentIdentifier.equals("DISCOUNTEDLIST")) {
             discId = getArguments().getInt("DISC_ID", 0);
+        } else if(fragmentIdentifier.equals("SEARCH")) {
+            searchText = getArguments().getString("SEARCH_TEXT");
         }
     }
 
@@ -94,7 +97,7 @@ public class RestaurantListFragment extends Fragment {
     private void setUpBannerImage(View v) {
         bannerImage = v.findViewById(R.id.list_banner_image);
         switch(fragmentIdentifier) {
-            case "SEARCH":
+            case "MOSTSEARCH":
                 Picasso.with(mActivity).load("https://dealznmealz.com/image/home1.jpg").into(bannerImage);
                 break;
 
@@ -131,7 +134,7 @@ public class RestaurantListFragment extends Fragment {
 
     private void loadRestaurantListData() {
         switch(fragmentIdentifier) {
-            case "SEARCH":
+            case "MOSTSEARCH":
                 String mostSearchedUrl = retrofitNetworkManagerService.getMostSearchedListingData().request().url().toString();
                 Log.v(TAG, "Most Searched URL : "+mostSearchedUrl);
                 Call<List<ListingModel>> mostSearchedDataCall = retrofitNetworkManagerService.getMostSearchedListingData();
@@ -164,6 +167,13 @@ public class RestaurantListFragment extends Fragment {
                 Log.v(TAG, "Discounted Restaurant Data Call : "+discountedListUrlCall);
                 Call<List<ListingModel>> discountedDataCall = retrofitNetworkManagerService.getDiscountListingData(discId);
                 loadListingData(discountedDataCall);
+                break;
+
+            case "SEARCH":
+                Call<List<ListingModel>> searchListUrlCall = retrofitNetworkManagerService.getSearchListingData(searchText);
+                String searchListUrl = searchListUrlCall.request().url().toString();
+                Log.v(TAG, "Search Listing Restaurant Data Call : "+searchListUrl);
+                loadListingData(searchListUrlCall);
                 break;
         }
     }

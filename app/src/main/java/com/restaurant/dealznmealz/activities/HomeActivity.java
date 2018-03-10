@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -81,6 +82,9 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
     private TextView searchByCategoryText;
     private TextView searchByPriceText;
     private TextView searchByLocationText;
+    private TextView searchView;
+
+    private String searchText = "";
 
     private List<DiscountedHotels> discountedHotelsList;
 
@@ -135,7 +139,7 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
     }
 
     public void onMostSearchClicked(View view) {
-        navigateToResataurantListActivity("SEARCH");
+        navigateToResataurantListActivity("MOSTSEARCH");
     }
 
     public void onMostReviewsClicked(View view) {
@@ -166,7 +170,13 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         i.putExtra("FRAGMENT_IDENTIFIER", restaurantListIdentifier);
         i.putExtra("DISC_ID", discId);
         startActivity(i);
+    }
 
+    private void navigateToResataurantListActivity(String restaurantListIdentifier, String searchText) {
+        Intent i = new Intent(this, RestaurantListActivity.class);
+        i.putExtra("FRAGMENT_IDENTIFIER", restaurantListIdentifier);
+        i.putExtra("SEARCH_TEXT", searchText);
+        startActivity(i);
     }
 
     @Override
@@ -299,6 +309,7 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         searchByCategoryText = findViewById(R.id.search_category_tv);
         searchByPriceText = findViewById(R.id.search_price_tv);
         searchByLocationText = findViewById(R.id.search_location_tv);
+        searchView = findViewById(R.id.search_view);
 
         searchByCategoryText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -310,6 +321,15 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
             @Override
             public void onClick(View view) {
                 searchList(view);
+            }
+        });
+
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!searchText.isEmpty()) {
+                    navigateToResataurantListActivity("SEARCH", searchText);
+                }
             }
         });
 
@@ -371,19 +391,25 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         });
     }
 
-    public PopupWindow popupWindowDialog(ArrayAdapter<String> dataSet) {
+    public PopupWindow popupWindowDialog(final ArrayAdapter<String> dataSet) {
 
         // initialize a pop up window type
         PopupWindow popupWindow = new PopupWindow(this);
 
         // the drop down list is a list view
-        ListView listViewDogs = new ListView(this);
+        ListView listViewSearch = new ListView(this);
 
         // set our adapter and pass our pop up window contents
-        listViewDogs.setAdapter(dataSet);
+        listViewSearch.setAdapter(dataSet);
 
         // set the item click listener
-//        listViewDogs.setOnItemClickListener(new DogsDropdownOnItemClickListener());
+        listViewSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                searchText = dataSet.getItem(i);
+                Log.v(TAG, "Search Text :- "+searchText);
+            }
+        });
 
         // some other visual settings
         popupWindow.setFocusable(true);
@@ -392,7 +418,7 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 
         // set the list view as pop up window content
-        popupWindow.setContentView(listViewDogs);
+        popupWindow.setContentView(listViewSearch);
         return popupWindow;
     }
 }

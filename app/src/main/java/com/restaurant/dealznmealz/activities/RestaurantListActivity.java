@@ -23,6 +23,7 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
     private int offerId;
     private String hotDealzImgUrl;
     private int discId;
+    private String searchText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +36,8 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
             hotDealzImgUrl = getIntent().getStringExtra("OFFER_IMG_URL");
         } else if(restaurantListIdentifier.equals("DISCOUNTEDLIST")) {
             discId = getIntent().getIntExtra("DISC_ID", 0);
+        } else if(restaurantListIdentifier.equals("SEARCH")) {
+            searchText = getIntent().getStringExtra("SEARCH_TEXT");
         }
 
         setToolBar();
@@ -57,7 +60,7 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
         bundle.putString(fragmentTitleKey, "Most Searched Restaurants");
         bundle.putString(fragmentIdentifierKey, restaurantListIdentifier);
         switch(restaurantListIdentifier) {
-            case "SEARCH":
+            case "MOSTSEARCH":
                 bundle.putString(fragmentTitleKey, "Most Searched Restaurants");
                 fragment.setArguments(bundle);
                 break;
@@ -80,6 +83,12 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
 
             case "DISCOUNTEDLIST":
                 bundle.putString(fragmentTitleKey, "Discounted Dealz");
+                bundle.putInt("DISC_ID", discId);
+                fragment.setArguments(bundle);
+                break;
+
+            case "SEARCH":
+                bundle.putString(fragmentTitleKey, "Search List");
                 bundle.putInt("DISC_ID", discId);
                 fragment.setArguments(bundle);
                 break;

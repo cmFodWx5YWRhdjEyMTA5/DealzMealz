@@ -71,4 +71,7 @@ public interface RetrofitNetworkManagerService {
     @GET("?discdetails=1")
     Call<List<ListingModel>> getDiscountListingData(@Query("discid") int discId);
 
+    @GET("?srchresto=1")
+    Call<List<ListingModel>> getSearchListingData(@Query("srchtxt") String searchText);
+
 }
