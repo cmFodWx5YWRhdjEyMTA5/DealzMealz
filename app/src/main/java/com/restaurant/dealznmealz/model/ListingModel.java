@@ -33,9 +33,13 @@ public class ListingModel {
     @Expose
     private String paidStatus;
 
-    @SerializedName("co-ordinates")
+    @SerializedName("latitude")
     @Expose
-    private Location locationData;
+    private String latitude;
+
+    @SerializedName("longitude")
+    @Expose
+    private String longitude;
 
     public String getId() {
         return id;
@@ -85,40 +89,19 @@ public class ListingModel {
         this.paidStatus = paidStatus;
     }
 
-    public Location getLocationData() {
-        return locationData;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setLocationData(Location locationData) {
-        this.locationData = locationData;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
-    public class Location {
-
-        @SerializedName("latitude")
-        @Expose
-        private double latitude;
-
-        @SerializedName("longitude")
-        @Expose
-        private double longitude;
-
-        public double getLatitude() {
-            return latitude;
-        }
-
-        public void setLatitude(long latitude) {
-            this.latitude = latitude;
-        }
-
-        public double getLongitude() {
-            return longitude;
-        }
-
-        public void setLongitude(long longitude) {
-            this.longitude = longitude;
-        }
+    public String getLongitude() {
+        return longitude;
     }
 
-
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 }

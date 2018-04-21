@@ -89,7 +89,7 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
 
             case "SEARCH":
                 bundle.putString(fragmentTitleKey, "Search List");
-                bundle.putInt("DISC_ID", discId);
+                bundle.putString("SEARCH_TEXT", searchText);
                 fragment.setArguments(bundle);
                 break;
         }

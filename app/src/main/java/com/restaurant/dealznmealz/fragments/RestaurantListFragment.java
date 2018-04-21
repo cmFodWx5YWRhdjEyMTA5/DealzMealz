@@ -2,6 +2,7 @@ package com.restaurant.dealznmealz.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.activities.HotelDetailsActivity;
 import com.restaurant.dealznmealz.activities.RestaurantListActivity;
 import com.restaurant.dealznmealz.adapter.OffersRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.RestaurantListRecyclerAdapter;
@@ -22,6 +24,7 @@ import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
 import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
+import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -34,7 +37,7 @@ import retrofit2.Response;
  * Created by ashis on 01-10-2017.
  */
 
-public class RestaurantListFragment extends Fragment {
+public class RestaurantListFragment extends Fragment implements RestaurantViewHolder.ItemClickListener {
 
     private RestaurantListActivity mActivity;
     private String fragmentTitle;
@@ -128,7 +131,7 @@ public class RestaurantListFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mActivity);
         recyclerView.setLayoutManager(layoutManager);
-        listRecyclerAdapter = new RestaurantListRecyclerAdapter(mActivity);
+        listRecyclerAdapter = new RestaurantListRecyclerAdapter(mActivity, this);
         loadRestaurantListData();
     }
 
@@ -195,5 +198,16 @@ public class RestaurantListFragment extends Fragment {
                 Log.v(TAG, "onFailure most searched data");
             }
         });
+    }
+
+    @Override
+    public void onItemClick(View view, int position, String restId) {
+        navigateToHotelDetailsActivity("PAID");
+    }
+
+    private void navigateToHotelDetailsActivity(String hotelDetailsIdentifier) {
+        Intent i = new Intent(mActivity, HotelDetailsActivity.class);
+        i.putExtra("FRAGMENT_IDENTIFIER", hotelDetailsIdentifier);
+        startActivity(i);
     }
 }

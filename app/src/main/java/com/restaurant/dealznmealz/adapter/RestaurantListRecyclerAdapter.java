@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.activities.RestaurantListActivity;
 import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.model.RestaurantDetails;
 import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
@@ -22,9 +23,11 @@ public class RestaurantListRecyclerAdapter extends RecyclerView.Adapter<Restaura
 
     private Context mContext;
     private List<ListingModel> listingModelList;
+    private RestaurantViewHolder.ItemClickListener mItemClickListener;
 
-    public RestaurantListRecyclerAdapter(Context context) {
+    public RestaurantListRecyclerAdapter(Context context, RestaurantViewHolder.ItemClickListener itemClickListener) {
         mContext = context;
+        mItemClickListener = itemClickListener;
     }
 
     public void setRestaurntListData(List<ListingModel> list) {
@@ -36,6 +39,7 @@ public class RestaurantListRecyclerAdapter extends RecyclerView.Adapter<Restaura
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_hotel_list_item, parent, false);
         RestaurantViewHolder restaurantViewHolder = new RestaurantViewHolder(view, mContext);
         restaurantViewHolder.setListingData(listingModelList);
+        restaurantViewHolder.setClickListener(mItemClickListener);
         return restaurantViewHolder;
     }
 
@@ -48,4 +52,5 @@ public class RestaurantListRecyclerAdapter extends RecyclerView.Adapter<Restaura
     public int getItemCount() {
         return listingModelList.size();
     }
+
 }

@@ -16,12 +16,13 @@ import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.activities.RestaurantListActivity;
 import com.restaurant.dealznmealz.adapter.RestaurantListRecyclerAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
+import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 
 /**
  * Created by ashis on 01-10-2017.
  */
 
-public class MostReviewsRestaurantListFragment extends Fragment {
+public class MostReviewsRestaurantListFragment extends Fragment implements RestaurantViewHolder.ItemClickListener {
 
     private RestaurantListActivity mActivity;
     private Context mContext;
@@ -63,7 +64,12 @@ public class MostReviewsRestaurantListFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mActivity);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new RestaurantListRecyclerAdapter(mActivity);
+        RecyclerView.Adapter adapter = new RestaurantListRecyclerAdapter(mActivity, this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(View view, int position, String restId) {
+        
     }
 }

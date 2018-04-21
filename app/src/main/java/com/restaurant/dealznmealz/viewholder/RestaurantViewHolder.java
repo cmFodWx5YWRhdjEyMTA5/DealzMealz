@@ -15,17 +15,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.model.ListingModel;
-import com.restaurant.dealznmealz.model.RestaurantDetails;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by ashis on 01-10-2017.
  */
 
-public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback {
+public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback, View.OnClickListener {
 
     private Context mContext;
 
@@ -36,10 +34,14 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
     private TextView hotelReviewsCount;
     private MapView hotelMapView;
     private GoogleMap map;
+    private double latitude;
+    private double longitude;
 
     private List<ListingModel> listingModelList;
 
     private NamedLocation locData;
+
+    private ItemClickListener mClickListener;
 
     /**
      * Location represented by a position ({@link com.google.android.gms.maps.model.LatLng} and a
@@ -59,6 +61,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
         initializeViews(itemView);
         initializeMapView();
         mContext = context;
+        itemView.setOnClickListener(this);
     }
 
     private void initializeViews(View itemView) {
@@ -82,8 +85,9 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
         hotelNameTextView.setText(listingModel.getName());
         hotelAddressTextView.setText(listingModel.getAddress());
         hotelReviewsCount.setText(listingModel.getRating());
-        ListingModel.Location loc = listingModel.getLocationData();
-        locData = new NamedLocation(new LatLng(loc.getLatitude(), loc.getLongitude()));
+        latitude = Double.parseDouble(listingModel.getLatitude());
+        longitude = Double.parseDouble(listingModel.getLongitude());
+        locData = new NamedLocation(new LatLng(latitude, longitude));
 
     }
 
@@ -120,4 +124,20 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 
+    // parent activity will implement this method to respond to click events
+    public interface ItemClickListener {
+        void onItemClick(View view, int position, String restId);
+    }
+
+    // allows clicks events to be caught
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        String restId = listingModelList.get(getAdapterPosition()).getId();
+        if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition(), restId);
+    }
 }

@@ -187,12 +187,6 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
     }
 
-    private void navigateToHotelDetailsActivity(String hotelDetailsIdentifier) {
-        Intent i = new Intent(this, HotelDetailsActivity.class);
-        i.putExtra("FRAGMENT_IDENTIFIER", hotelDetailsIdentifier);
-        startActivity(i);
-    }
-
     private void loadPaidBannerData() {
         String bannerUrl = retrofitNetworkManagerService.getPaidBannerList().request().url().toString();
         Log.v(TAG, "Banner URL : " + bannerUrl);
