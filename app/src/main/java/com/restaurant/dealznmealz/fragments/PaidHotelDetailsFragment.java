@@ -8,9 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,8 +26,18 @@ import com.restaurant.dealznmealz.activities.HotelDetailsActivity;
 import com.restaurant.dealznmealz.adapter.HotelMenuAdapter;
 import com.restaurant.dealznmealz.adapter.HotelPhotosAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
+import com.restaurant.dealznmealz.model.ListingModel;
+import com.restaurant.dealznmealz.model.RestaurantDetails;
+import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
+import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
 import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 import com.restaurant.dealznmealz.widget.ItemOffsetDecoration;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +60,11 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
     private MapView hotelMapView;
     private GoogleMap map;
 
+    private RetrofitNetworkManager retrofitNetworkManager = RetrofitNetworkManager.getNetworkManager();
+    private RetrofitNetworkManagerService retrofitNetworkManagerService = retrofitNetworkManager.getNetworkManagerService();
+
+    private String restId;
+
     private NamedLocation locData = new NamedLocation("Nagpur", new LatLng(21.1458, 79.0882));
 
     /**
@@ -66,11 +83,22 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         }
     }
 
+    private final String TAG = PaidHotelDetailsFragment.class.getSimpleName();
+
+    private RestaurantDetails restaurantDetails;
+
+    private TextView restaurantName;
+    private TextView restaurantAddress;
+    private TextView restaurantOpenStatus;
+    private TextView restaurantTimings;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivity = (HotelDetailsActivity) getActivity();
         mContext = mActivity;
+        restId = getArguments().getString("REST_ID");
+        Log.v(TAG, "Restaurant Id - "+restId);
     }
 
     @Override
@@ -82,11 +110,20 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         View v = (View) inflater.inflate(R.layout.fragment_paid_hotel_details, container, false);
 
         hotelMapView = (MapView) v.findViewById(R.id.hotel_map_view);
+        fetchRestaurantDetailsData();
+        initializeTextViews(v);
         setUpViewPagerMenu(v);
         setUpHorizontalMenuAdapter(v);
         setUpHorizontalPhotosAdapter(v);
         initializeMapView();
         return v;
+    }
+
+    private void initializeTextViews(View v) {
+        restaurantName = v.findViewById(R.id.txt_hotel_name);
+        restaurantAddress = v.findViewById(R.id.txt_hotel_address);
+        restaurantOpenStatus = v.findViewById(R.id.txt_hotel_openingtime);
+        restaurantTimings = v.findViewById(R.id.txt_hotel_timing);
     }
 
     private void setUpViewPagerMenu(View view) {
@@ -148,6 +185,33 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
 
         // Set the map type back to normal.
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+    }
+
+    private void fetchRestaurantDetailsData() {
+        Call<List<RestaurantDetails>> restaurantDetailsUrlCall = retrofitNetworkManagerService.getRestaurantDetails(restId);
+        String url = restaurantDetailsUrlCall.request().url().toString();
+        Log.v(TAG, "Restaurant Details Url - "+url);
+        restaurantDetailsUrlCall.enqueue(new Callback<List<RestaurantDetails>>() {
+            @Override
+            public void onResponse(Call<List<RestaurantDetails>> call, Response<List<RestaurantDetails>> response) {
+                Log.v(TAG, "On Response");
+                List<RestaurantDetails> list = response.body();
+                restaurantDetails = list.get(0);
+                Log.v(TAG, "On Response List :- "+restaurantDetails.toString());
+                setRestaurantData();
+            }
+
+            @Override
+            public void onFailure(Call<List<RestaurantDetails>> call, Throwable t) {
+                Log.v(TAG, "onFailure most searched data");
+            }
+        });
+    }
+
+    private void setRestaurantData() {
+        restaurantName.setText(restaurantDetails.getRestaurantName());
+        restaurantAddress.setText(restaurantDetails.getRestaurantAddress());
+        restaurantOpenStatus.setText(restaurantDetails.getRestaurantOpeningHours());
     }
 
 }

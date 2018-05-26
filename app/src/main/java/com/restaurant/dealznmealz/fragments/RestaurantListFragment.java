@@ -202,12 +202,13 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 
     @Override
     public void onItemClick(View view, int position, String restId) {
-        navigateToHotelDetailsActivity("PAID");
+        navigateToHotelDetailsActivity("PAID", restId);
     }
 
-    private void navigateToHotelDetailsActivity(String hotelDetailsIdentifier) {
+    private void navigateToHotelDetailsActivity(String hotelDetailsIdentifier, String restId) {
         Intent i = new Intent(mActivity, HotelDetailsActivity.class);
         i.putExtra("FRAGMENT_IDENTIFIER", hotelDetailsIdentifier);
+        i.putExtra("REST_ID", restId);
         startActivity(i);
     }
 }

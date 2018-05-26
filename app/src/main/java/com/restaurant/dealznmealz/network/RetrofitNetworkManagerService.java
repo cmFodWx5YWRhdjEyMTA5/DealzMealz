@@ -7,6 +7,7 @@ import com.restaurant.dealznmealz.model.HotDealzOffers;
 import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.model.PaidBanners;
 import com.restaurant.dealznmealz.model.RegistrationResponse;
+import com.restaurant.dealznmealz.model.RestaurantDetails;
 import com.restaurant.dealznmealz.model.SearchLocationModel;
 
 import java.util.List;
@@ -73,5 +74,8 @@ public interface RetrofitNetworkManagerService {
 
     @GET("?srchresto=1")
     Call<List<ListingModel>> getSearchListingData(@Query("srchtxt") String searchText);
+
+    @GET("?offrestdisc=1")
+    Call<List<RestaurantDetails>> getRestaurantDetails(@Query("restid") String restId);
 
 }
