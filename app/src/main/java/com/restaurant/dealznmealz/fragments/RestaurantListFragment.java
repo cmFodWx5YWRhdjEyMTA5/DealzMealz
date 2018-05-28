@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,12 +23,15 @@ import com.restaurant.dealznmealz.adapter.OffersRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.RestaurantListRecyclerAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
 import com.restaurant.dealznmealz.model.ListingModel;
+import com.restaurant.dealznmealz.model.PaidBanners;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
 import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,6 +68,10 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 
     private int discId;
     private String searchText;
+    private int currentPage = 0;
+    private Timer timer;
+    final long DELAY_MS = 500;//delay in milliseconds before task is to be executed
+    final long PERIOD_MS = 3000; // time in milliseconds between successive task executions.
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,7 +100,8 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 
         TextView headerTextView = (TextView) v.findViewById(R.id.header_title);
         headerTextView.setText(fragmentTitle);
-        setUpBannerImage(v);
+        setUpViewPagerMenu(v);
+//        setUpBannerImage(v);
         setUpRestaurantList(v);
         return v;
     }
@@ -124,6 +133,50 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 
         restaurantPagerAdapter = new ViewPagerMenuAdapter(mActivity);
         viewPager.setAdapter(restaurantPagerAdapter);
+        loadPaidBannerData();
+    }
+
+    private void loadPaidBannerData() {
+        String bannerUrl = retrofitNetworkManagerService.getPaidBannerList().request().url().toString();
+        Log.v(TAG, "Banner URL : " + bannerUrl);
+        Call<List<PaidBanners>> userDetailsCall = retrofitNetworkManagerService.getPaidBannerList();
+        userDetailsCall.enqueue(new Callback<List<PaidBanners>>() {
+            @Override
+            public void onResponse(Call<List<PaidBanners>> call, Response<List<PaidBanners>> response) {
+                Log.v(TAG, "Response details : " + response.body());
+                List<PaidBanners> paidBannerList = response.body();
+                restaurantPagerAdapter.setPaidBannersListData(paidBannerList);
+                viewPager.setAdapter(restaurantPagerAdapter);
+                animateViewPager();
+            }
+
+            @Override
+            public void onFailure(Call<List<PaidBanners>> call, Throwable t) {
+                Log.v(TAG, "onFailure");
+            }
+        });
+    }
+
+    private void animateViewPager() {
+        /*After setting the adapter use the timer */
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == restaurantPagerAdapter.getCount() - 1) {
+                    currentPage = 0;
+                }
+                viewPager.setCurrentItem(currentPage++, true);
+            }
+        };
+
+        timer = new Timer(); // This will create a new Thread
+        timer.schedule(new TimerTask() { // task to be scheduled
+
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, DELAY_MS, PERIOD_MS);
     }
 
     private void setUpRestaurantList(View v) {
@@ -202,6 +255,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 
     @Override
     public void onItemClick(View view, int position, String restId) {
+        Log.v(TAG, "Restaurnat List Clicked - "+restId);
         navigateToHotelDetailsActivity("PAID", restId);
     }
 
