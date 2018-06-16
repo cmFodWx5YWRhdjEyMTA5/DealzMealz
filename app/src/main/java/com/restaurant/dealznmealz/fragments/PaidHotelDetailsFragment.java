@@ -75,11 +75,15 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
 
         public final String name;
 
-        public final LatLng location;
+        public LatLng location;
 
         NamedLocation(String name, LatLng location) {
             this.name = name;
             this.location = location;
+        }
+
+        public void setRestaurantLocation(LatLng latLng) {
+            this.location = latLng;
         }
     }
 
@@ -212,6 +216,9 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         restaurantName.setText(restaurantDetails.getRestaurantName());
         restaurantAddress.setText(restaurantDetails.getRestaurantAddress());
         restaurantOpenStatus.setText(restaurantDetails.getRestaurantOpeningHours());
+        Double lat = Double.parseDouble(restaurantDetails.getRestaurantLatitude());
+        Double lng = Double.parseDouble(restaurantDetails.getRestaurantLongitude());
+        locData.setRestaurantLocation(new LatLng(lat, lng));
     }
 
 }
