@@ -79,25 +79,13 @@ public class RestaurantDetails {
     @Expose
     private String restaurantBookTable;
 
-    @SerializedName("review")
-    @Expose
-    private String restaurantReviews;
-
     @SerializedName("rating")
     @Expose
-    private String restaurantRating;
+    private int restaurantRating;
 
     @SerializedName("paid")
     @Expose
     private String restaurantPaidCategory;
-
-    @SerializedName("sliderimg")
-    @Expose
-    private List<String> restaurantImages;
-
-    @SerializedName("menu")
-    @Expose
-    private List<String> restaurantMenuImages;
 
     public String getId() {
         return id;
@@ -235,19 +223,11 @@ public class RestaurantDetails {
         this.restaurantBookTable = restaurantBookTable;
     }
 
-    public String getRestaurantReviews() {
-        return restaurantReviews;
-    }
-
-    public void setRestaurantReviews(String restaurantReviews) {
-        this.restaurantReviews = restaurantReviews;
-    }
-
-    public String getRestaurantRating() {
+    public int getRestaurantRating() {
         return restaurantRating;
     }
 
-    public void setRestaurantRating(String restaurantRating) {
+    public void setRestaurantRating(int restaurantRating) {
         this.restaurantRating = restaurantRating;
     }
 
@@ -257,21 +237,5 @@ public class RestaurantDetails {
 
     public void setRestaurantPaidCategory(String restaurantPaidCategory) {
         this.restaurantPaidCategory = restaurantPaidCategory;
-    }
-
-    public List<String> getRestaurantImages() {
-        return restaurantImages;
-    }
-
-    public void setRestaurantImages(List<String> restaurantImages) {
-        this.restaurantImages = restaurantImages;
-    }
-
-    public List<String> getRestaurantMenuImages() {
-        return restaurantMenuImages;
-    }
-
-    public void setRestaurantMenuImages(List<String> restaurantMenuImages) {
-        this.restaurantMenuImages = restaurantMenuImages;
     }
 }

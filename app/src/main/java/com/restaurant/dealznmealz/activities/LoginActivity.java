@@ -15,7 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.pixplicity.easyprefs.library.Prefs;
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.Utils.Utils;
 import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
@@ -110,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void navigateToHomeScreen() {
-
+        Prefs.putBoolean(Utils.IS_USER_LOGGED_OR_NOT, true);
         Intent i = new Intent(this, HomeActivity.class);
         startActivity(i);
         finish();

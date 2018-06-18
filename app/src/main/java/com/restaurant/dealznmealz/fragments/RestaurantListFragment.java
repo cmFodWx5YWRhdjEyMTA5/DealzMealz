@@ -107,25 +107,25 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
     }
 
     private void setUpBannerImage(View v) {
-        bannerImage = v.findViewById(R.id.list_banner_image);
-        switch(fragmentIdentifier) {
-            case "MOSTSEARCH":
-                Picasso.with(mActivity).load("https://dealznmealz.com/image/home1.jpg").into(bannerImage);
-                break;
-
-            case "REVIEWS":
-                Picasso.with(mActivity).load("https://dealznmealz.com/image/home2.jpeg").into(bannerImage);
-                break;
-
-            case "LATEST":
-                Picasso.with(mActivity).load("https://dealznmealz.com/image/home4.jpg").into(bannerImage);
-                break;
-
-            case "HOTDEALZ":
-                Log.v(TAG, "Hot Dealz img url :- "+hotDealzImgUrl);
-                Picasso.with(mActivity).load(hotDealzImgUrl).into(bannerImage);
-                break;
-        }
+//        bannerImage = v.findViewById(R.id.list_banner_image);
+//        switch(fragmentIdentifier) {
+//            case "MOSTSEARCH":
+//                Picasso.with(mActivity).load("https://dealznmealz.com/image/home1.jpg").into(bannerImage);
+//                break;
+//
+//            case "REVIEWS":
+//                Picasso.with(mActivity).load("https://dealznmealz.com/image/home2.jpeg").into(bannerImage);
+//                break;
+//
+//            case "LATEST":
+//                Picasso.with(mActivity).load("https://dealznmealz.com/image/home4.jpg").into(bannerImage);
+//                break;
+//
+//            case "HOTDEALZ":
+//                Log.v(TAG, "Hot Dealz img url :- "+hotDealzImgUrl);
+//                Picasso.with(mActivity).load(hotDealzImgUrl).into(bannerImage);
+//                break;
+//        }
     }
 
     private void setUpViewPagerMenu(View v) {
