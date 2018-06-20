@@ -59,7 +59,6 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
     public RestaurantViewHolder(View itemView, Context context) {
         super(itemView);
         initializeViews(itemView);
-        initializeMapView();
         mContext = context;
         itemView.setOnClickListener(this);
     }
@@ -88,6 +87,8 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
         latitude = Double.parseDouble(listingModel.getLatitude());
         longitude = Double.parseDouble(listingModel.getLongitude());
         locData = new NamedLocation(new LatLng(latitude, longitude));
+        initializeMapView();
+
 
     }
 
