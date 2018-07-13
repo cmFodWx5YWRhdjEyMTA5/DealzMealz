@@ -1,6 +1,7 @@
 package com.restaurant.dealznmealz.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.activities.HotelDetailsActivity;
 import com.restaurant.dealznmealz.model.PaidBanners;
 import com.squareup.picasso.Picasso;
 
@@ -70,10 +72,12 @@ public class ViewPagerMenuAdapter extends PagerAdapter {
 
         container.addView(itemView);
 
+        final String restId = String.valueOf(paidBannerListData.get(position).getPaidHotelRestoId());
         //listening to image click
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                navigateToHotelDetailsActivity("PAID", restId);
             }
         });
 
@@ -83,5 +87,12 @@ public class ViewPagerMenuAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((LinearLayout) object);
+    }
+
+    private void navigateToHotelDetailsActivity(String hotelDetailsIdentifier, String restId) {
+        Intent i = new Intent(context, HotelDetailsActivity.class);
+        i.putExtra("FRAGMENT_IDENTIFIER", hotelDetailsIdentifier);
+        i.putExtra("REST_ID", restId);
+        context.startActivity(i);
     }
 }
