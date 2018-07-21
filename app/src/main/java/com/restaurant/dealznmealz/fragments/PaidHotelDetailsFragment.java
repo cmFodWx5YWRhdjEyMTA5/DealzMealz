@@ -35,6 +35,7 @@ import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
 import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 import com.restaurant.dealznmealz.widget.ItemOffsetDecoration;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -103,7 +104,11 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
     private TextView restaurantName;
     private TextView restaurantAddress;
     private TextView restaurantOpenStatus;
-    private TextView restaurantTimings;
+    private TextView restaurantMorningTimings;
+    private TextView restaurantEveningTimings;
+    private TextView restaurantRatings;
+    private TextView restaurantCategory;
+    private TextView restaurantContact;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -126,46 +131,39 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         fetchRestaurantDetailsData();
         initializeTextViews(v);
         setUpViewPagerMenu(v);
-        setUpHorizontalMenuAdapter(v);
-        setUpHorizontalPhotosAdapter(v);
+        //setUpHorizontalMenuAdapter(v);
+        //setUpHorizontalPhotosAdapter(v);
         initializeMapView();
         return v;
     }
 
     private void initializeTextViews(View v) {
         restaurantName = v.findViewById(R.id.txt_hotel_name);
-        restaurantAddress = v.findViewById(R.id.txt_hotel_address);
-        restaurantOpenStatus = v.findViewById(R.id.txt_hotel_openingtime);
-        restaurantTimings = v.findViewById(R.id.txt_hotel_timing);
+        restaurantAddress = v.findViewById(R.id.txt_hotel_completeaddress);
+        restaurantOpenStatus = v.findViewById(R.id.txt_hotel_opening_status);
+        restaurantMorningTimings = v.findViewById(R.id.txt_hotel_timing);
+        restaurantEveningTimings = v.findViewById(R.id.txt_hotel_evening_value);
+        restaurantRatings = v.findViewById(R.id.hotel_rating);
+        restaurantCategory = v.findViewById(R.id.txt_hotel_category_value);
+        restaurantContact = v.findViewById(R.id.txt_phone_no);
     }
 
     private void setUpViewPagerMenu(View view) {
         viewPager = view.findViewById(R.id.pager);
 
         restaurantPagerAdapter = new ViewPagerMenuAdapter(mContext);
-        viewPager.setAdapter(restaurantPagerAdapter);
-        loadPaidBannerData();
     }
 
     private void loadPaidBannerData() {
-        String bannerUrl = retrofitNetworkManagerService.getPaidBannerList().request().url().toString();
-        Log.v(TAG, "Banner URL : " + bannerUrl);
-        Call<List<PaidBanners>> userDetailsCall = retrofitNetworkManagerService.getPaidBannerList();
-        userDetailsCall.enqueue(new Callback<List<PaidBanners>>() {
-            @Override
-            public void onResponse(Call<List<PaidBanners>> call, Response<List<PaidBanners>> response) {
-                Log.v(TAG, "Response details : " + response.body());
-                List<PaidBanners> paidBannerList = response.body();
-                restaurantPagerAdapter.setPaidBannersListData(paidBannerList);
-                viewPager.setAdapter(restaurantPagerAdapter);
-                animateViewPager();
-            }
 
-            @Override
-            public void onFailure(Call<List<PaidBanners>> call, Throwable t) {
-                Log.v(TAG, "onFailure");
-            }
-        });
+        List<String> hotelDetailImages = new ArrayList<>();
+        hotelDetailImages.add(restaurantDetails.getRestaurantDetailImages().getRestaurantImage_0());
+        hotelDetailImages.add(restaurantDetails.getRestaurantDetailImages().getRestaurantImage_1());
+        hotelDetailImages.add(restaurantDetails.getRestaurantDetailImages().getRestaurantImage_2());
+        restaurantPagerAdapter.setHotelDetailsImages(hotelDetailImages);
+        viewPager.setAdapter(restaurantPagerAdapter);
+        animateViewPager();
+
     }
 
     private void animateViewPager() {
@@ -190,7 +188,7 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         }, DELAY_MS, PERIOD_MS);
     }
 
-    private void setUpHorizontalMenuAdapter(View view) {
+/*    private void setUpHorizontalMenuAdapter(View view) {
 
         horizontal_recycler_view = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
         hotelMenuAdapter = new HotelMenuAdapter(mContext);
@@ -209,7 +207,7 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         horizontal_recycler_photos_view.setLayoutManager(horizontalLayoutManagaer);
         horizontal_recycler_photos_view.setAdapter(hotelPhotosAdapter);
         horizontal_recycler_photos_view.addItemDecoration(new ItemOffsetDecoration(10));
-    }
+    }*/
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -256,6 +254,7 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
                 restaurantDetails = list.get(0);
                 Log.v(TAG, "On Response List :- "+restaurantDetails.toString());
                 setRestaurantData();
+                loadPaidBannerData();
             }
 
             @Override
@@ -269,6 +268,11 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         restaurantName.setText(restaurantDetails.getRestaurantName());
         restaurantAddress.setText(restaurantDetails.getRestaurantAddress());
         restaurantOpenStatus.setText(restaurantDetails.getRestaurantOpeningHours());
+        restaurantMorningTimings.setText(restaurantDetails.getRestaurantMorningTime());
+        restaurantEveningTimings.setText(restaurantDetails.getRestaurantEveningTime());
+        restaurantRatings.setText(String.valueOf(restaurantDetails.getRestaurantRating()));
+        restaurantCategory.setText(restaurantDetails.getRestaurantCategory());
+        restaurantContact.setText(restaurantDetails.getRestaurantContact());
         Double lat = Double.parseDouble(restaurantDetails.getRestaurantLatitude());
         Double lng = Double.parseDouble(restaurantDetails.getRestaurantLongitude());
         locData.setRestaurantLocation(new LatLng(lat, lng));

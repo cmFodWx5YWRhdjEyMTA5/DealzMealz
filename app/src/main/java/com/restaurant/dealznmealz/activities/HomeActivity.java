@@ -95,12 +95,23 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
         mActivity = this;
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         setUpViewPagerMenu();
         setToolBar();
         setUpOffersRecyclerView();
         setUpHotDealzView();
         loadBottomTabImages();
         setUpSearchViewItems();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopViewPagerAnimation();
     }
 
     private void setUpViewPagerMenu() {
@@ -297,6 +308,10 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
                 handler.post(Update);
             }
         }, DELAY_MS, PERIOD_MS);
+    }
+
+    private void stopViewPagerAnimation() {
+        timer.cancel();
     }
 
     private void setUpSearchViewItems() {

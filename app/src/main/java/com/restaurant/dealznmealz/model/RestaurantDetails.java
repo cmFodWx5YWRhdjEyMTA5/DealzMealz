@@ -87,6 +87,10 @@ public class RestaurantDetails {
     @Expose
     private String restaurantPaidCategory;
 
+    @SerializedName("sliderimg")
+    @Expose
+    private RestaurantDetailImages restaurantDetailImages;
+
     public String getId() {
         return id;
     }
@@ -237,5 +241,13 @@ public class RestaurantDetails {
 
     public void setRestaurantPaidCategory(String restaurantPaidCategory) {
         this.restaurantPaidCategory = restaurantPaidCategory;
+    }
+
+    public RestaurantDetailImages getRestaurantDetailImages() {
+        return restaurantDetailImages;
+    }
+
+    public void setRestaurantDetailImages(RestaurantDetailImages restaurantDetailImages) {
+        this.restaurantDetailImages = restaurantDetailImages;
     }
 }

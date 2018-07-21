@@ -106,34 +106,23 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
         return v;
     }
 
-    private void setUpBannerImage(View v) {
-//        bannerImage = v.findViewById(R.id.list_banner_image);
-//        switch(fragmentIdentifier) {
-//            case "MOSTSEARCH":
-//                Picasso.with(mActivity).load("https://dealznmealz.com/image/home1.jpg").into(bannerImage);
-//                break;
-//
-//            case "REVIEWS":
-//                Picasso.with(mActivity).load("https://dealznmealz.com/image/home2.jpeg").into(bannerImage);
-//                break;
-//
-//            case "LATEST":
-//                Picasso.with(mActivity).load("https://dealznmealz.com/image/home4.jpg").into(bannerImage);
-//                break;
-//
-//            case "HOTDEALZ":
-//                Log.v(TAG, "Hot Dealz img url :- "+hotDealzImgUrl);
-//                Picasso.with(mActivity).load(hotDealzImgUrl).into(bannerImage);
-//                break;
-//        }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadPaidBannerData();
+        loadRestaurantListData();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        stopViewPagerAnimation();
     }
 
     private void setUpViewPagerMenu(View v) {
         viewPager = (ViewPager) v.findViewById(R.id.viewPager);
 
         restaurantPagerAdapter = new ViewPagerMenuAdapter(mActivity);
-        viewPager.setAdapter(restaurantPagerAdapter);
-        loadPaidBannerData();
     }
 
     private void loadPaidBannerData() {
@@ -179,13 +168,16 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
         }, DELAY_MS, PERIOD_MS);
     }
 
+    private void stopViewPagerAnimation() {
+        timer.cancel();
+    }
+
     private void setUpRestaurantList(View v) {
         recyclerView = (RecyclerView) v.findViewById(R.id.restaurant_list_recycler);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mActivity);
         recyclerView.setLayoutManager(layoutManager);
         listRecyclerAdapter = new RestaurantListRecyclerAdapter(mActivity, this);
-        loadRestaurantListData();
     }
 
     private void loadRestaurantListData() {

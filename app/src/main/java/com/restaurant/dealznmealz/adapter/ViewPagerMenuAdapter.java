@@ -48,6 +48,10 @@ public class ViewPagerMenuAdapter extends PagerAdapter {
         Log.v("ViewPagerAdapter", "setPaidBannersListData");
     }
 
+    public void setHotelDetailsImages(List<String> hotelDetailsImages) {
+        bannerImageUrl.addAll(hotelDetailsImages);
+    }
+
     @Override
     public int getCount() {
         return bannerImageUrl.size();
@@ -66,20 +70,25 @@ public class ViewPagerMenuAdapter extends PagerAdapter {
 //        imageView.setBackgroundResource(images[position]);
 
         String imageUrl = "https://dealznmealz.com/" + bannerImageUrl.get(position);
+
+        Log.v("ViewPagerAdapter", "Image Url - "+imageUrl);
         Picasso.with(context).load(imageUrl).into(imageView);
 
         Log.v("ViewPagerAdapter", "instantiateItem");
 
         container.addView(itemView);
 
-        final String restId = String.valueOf(paidBannerListData.get(position).getPaidHotelRestoId());
-        //listening to image click
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateToHotelDetailsActivity("PAID", restId);
-            }
-        });
+        if (paidBannerListData != null) {
+            final String restId = String.valueOf(paidBannerListData.get(position).getPaidHotelRestoId());
+            Log.v("View Pager", "Restro Id - "+restId);
+            //listening to image click
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToHotelDetailsActivity("PAID", restId);
+                }
+            });
+        }
 
         return itemView;
     }
