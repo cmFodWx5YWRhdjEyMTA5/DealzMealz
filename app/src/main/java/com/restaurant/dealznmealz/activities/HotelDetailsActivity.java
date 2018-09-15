@@ -2,8 +2,10 @@ package com.restaurant.dealznmealz.activities;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.fragments.RestaurantListFragment;
@@ -21,7 +23,16 @@ public class HotelDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hotel_details);
         hotelDetailsIdentifier = getIntent().getStringExtra("FRAGMENT_IDENTIFIER");
         restId = getIntent().getStringExtra("REST_ID");
+        setToolBar();
         setUpFragements(hotelDetailsIdentifier);
+    }
+
+    private void setToolBar() {
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(false);
+        ab.setDisplayShowTitleEnabled(false);
     }
 
     private void setUpFragements(String hotelDetailsIdentifier) {

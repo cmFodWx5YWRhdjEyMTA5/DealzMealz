@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -122,6 +124,11 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
     private ReviewsRecyclerAdapter reviewsRecyclerAdapter;
     private List<ReviewsModel> reviewsList;
 
+    private TextView noReviewsText;
+
+    private RelativeLayout detailLayout;
+    private ProgressBar progressBar;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,8 +147,12 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         View v = (View) inflater.inflate(R.layout.fragment_paid_hotel_details, container, false);
 
         hotelMapView = (MapView) v.findViewById(R.id.hotel_map_view);
-        setUpRestaurantReviewsList(v);
+        detailLayout = (RelativeLayout) v.findViewById(R.id.detail_layout);
+        progressBar = (ProgressBar) v.findViewById(R.id.progress_bar);
+
+        setVisibility(0);
         fetchRestaurantDetailsData();
+        setUpRestaurantReviewsList(v);
         initializeTextViews(v);
         setUpViewPagerMenu(v);
         //setUpHorizontalMenuAdapter(v);
@@ -201,26 +212,6 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         }, DELAY_MS, PERIOD_MS);
     }
 
-/*    private void setUpHorizontalMenuAdapter(View view) {
-
-        horizontal_recycler_view = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
-        hotelMenuAdapter = new HotelMenuAdapter(mContext);
-        LinearLayoutManager horizontalLayoutManagaer
-                = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        horizontal_recycler_view.setLayoutManager(horizontalLayoutManagaer);
-        horizontal_recycler_view.setAdapter(hotelMenuAdapter);
-        horizontal_recycler_view.addItemDecoration(new ItemOffsetDecoration(10));
-    }
-
-    private void setUpHorizontalPhotosAdapter(View view) {
-        horizontal_recycler_photos_view = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view_photos);
-        hotelPhotosAdapter = new HotelPhotosAdapter(mContext);
-        LinearLayoutManager horizontalLayoutManagaer
-                = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        horizontal_recycler_photos_view.setLayoutManager(horizontalLayoutManagaer);
-        horizontal_recycler_photos_view.setAdapter(hotelPhotosAdapter);
-        horizontal_recycler_photos_view.addItemDecoration(new ItemOffsetDecoration(10));
-    }*/
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -271,6 +262,7 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
                 Log.v(TAG, "On Response List :- "+restaurantDetails.toString());
                 setRestaurantData();
                 loadPaidBannerData();
+                setVisibility(1);
             }
 
             @Override
@@ -292,8 +284,14 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         Double lat = Double.parseDouble(restaurantDetails.getRestaurantLatitude());
         Double lng = Double.parseDouble(restaurantDetails.getRestaurantLongitude());
         locData.setRestaurantLocation(new LatLng(lat, lng));
-        reviewsRecyclerAdapter.setReviewsList(restaurantDetails.getReviewList());
-        recyclerView.setAdapter(reviewsRecyclerAdapter);
+
+        if (restaurantDetails.getReviewList().size() != 0) {
+            reviewsRecyclerAdapter.setReviewsList(restaurantDetails.getReviewList());
+            recyclerView.setAdapter(reviewsRecyclerAdapter);
+        } else {
+            noReviewsText.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        }
     }
 
     private void setUpRestaurantReviewsList(View v) {
@@ -302,6 +300,21 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mActivity);
         recyclerView.setLayoutManager(layoutManager);
         reviewsRecyclerAdapter = new ReviewsRecyclerAdapter(mActivity);
+        noReviewsText = (TextView) v.findViewById(R.id.no_reviews_text);
+    }
+
+    private void setVisibility(int visibility) {
+        switch (visibility) {
+            case 0:
+                progressBar.setVisibility(View.VISIBLE);
+                detailLayout.setVisibility(View.GONE);
+                break;
+
+            case 1:
+                progressBar.setVisibility(View.GONE);
+                detailLayout.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
 }
