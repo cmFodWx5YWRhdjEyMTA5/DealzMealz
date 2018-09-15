@@ -3,6 +3,7 @@ package com.restaurant.dealznmealz.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -90,6 +91,10 @@ public class RestaurantDetails {
     @SerializedName("sliderimg")
     @Expose
     private RestaurantDetailImages restaurantDetailImages;
+
+    @SerializedName("reviews")
+    @Expose
+    private ArrayList<ReviewsModel> reviewList;
 
     public String getId() {
         return id;
@@ -249,5 +254,13 @@ public class RestaurantDetails {
 
     public void setRestaurantDetailImages(RestaurantDetailImages restaurantDetailImages) {
         this.restaurantDetailImages = restaurantDetailImages;
+    }
+
+    public List<ReviewsModel> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(ArrayList<ReviewsModel> reviewList) {
+        this.reviewList = reviewList;
     }
 }

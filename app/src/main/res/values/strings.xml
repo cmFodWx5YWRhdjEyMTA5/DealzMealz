@@ -34,4 +34,5 @@
     <string name="Add_your_review">Add Your Review</string>
     <string name="food">Food</string>
     <string name="review_text">user can add their review for the service</string>
+    <string name="hotel_reviews_text">Reviews</string>
 </resources>

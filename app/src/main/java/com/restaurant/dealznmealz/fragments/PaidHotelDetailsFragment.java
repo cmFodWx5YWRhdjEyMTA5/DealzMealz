@@ -22,18 +22,26 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.restaurant.dealznmealz.R;
 import com.restaurant.dealznmealz.activities.HotelDetailsActivity;
 import com.restaurant.dealznmealz.adapter.HotelMenuAdapter;
 import com.restaurant.dealznmealz.adapter.HotelPhotosAdapter;
+import com.restaurant.dealznmealz.adapter.RestaurantListRecyclerAdapter;
+import com.restaurant.dealznmealz.adapter.ReviewsRecyclerAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
 import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.model.PaidBanners;
+import com.restaurant.dealznmealz.model.RestaurantDetailImages;
 import com.restaurant.dealznmealz.model.RestaurantDetails;
+import com.restaurant.dealznmealz.model.ReviewsModel;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
 import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 import com.restaurant.dealznmealz.widget.ItemOffsetDecoration;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +118,10 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
     private TextView restaurantCategory;
     private TextView restaurantContact;
 
+    private RecyclerView recyclerView;
+    private ReviewsRecyclerAdapter reviewsRecyclerAdapter;
+    private List<ReviewsModel> reviewsList;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,6 +140,7 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         View v = (View) inflater.inflate(R.layout.fragment_paid_hotel_details, container, false);
 
         hotelMapView = (MapView) v.findViewById(R.id.hotel_map_view);
+        setUpRestaurantReviewsList(v);
         fetchRestaurantDetailsData();
         initializeTextViews(v);
         setUpViewPagerMenu(v);
@@ -243,22 +256,25 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
     }
 
     private void fetchRestaurantDetailsData() {
-        Call<List<RestaurantDetails>> restaurantDetailsUrlCall = retrofitNetworkManagerService.getRestaurantDetails(restId);
+        Call<Object> restaurantDetailsUrlCall = retrofitNetworkManagerService.getRestaurantDetails(restId);
         String url = restaurantDetailsUrlCall.request().url().toString();
         Log.v(TAG, "Restaurant Details Url - "+url);
-        restaurantDetailsUrlCall.enqueue(new Callback<List<RestaurantDetails>>() {
+        restaurantDetailsUrlCall.enqueue(new Callback<Object>() {
             @Override
-            public void onResponse(Call<List<RestaurantDetails>> call, Response<List<RestaurantDetails>> response) {
+            public void onResponse(Call<Object> call, Response<Object> response) {
                 Log.v(TAG, "On Response");
-                List<RestaurantDetails> list = response.body();
-                restaurantDetails = list.get(0);
+                Object object = response.body();
+                Gson gson = new Gson();
+                String jsonObjectString = gson.toJson(object);
+                RestaurantDetails[] restaurantDetailsArray = gson.fromJson(jsonObjectString, RestaurantDetails[].class);
+                restaurantDetails = restaurantDetailsArray[0];
                 Log.v(TAG, "On Response List :- "+restaurantDetails.toString());
                 setRestaurantData();
                 loadPaidBannerData();
             }
 
             @Override
-            public void onFailure(Call<List<RestaurantDetails>> call, Throwable t) {
+            public void onFailure(Call<Object> call, Throwable t) {
                 Log.v(TAG, "onFailure most searched data");
             }
         });
@@ -276,6 +292,16 @@ public class PaidHotelDetailsFragment extends Fragment implements OnMapReadyCall
         Double lat = Double.parseDouble(restaurantDetails.getRestaurantLatitude());
         Double lng = Double.parseDouble(restaurantDetails.getRestaurantLongitude());
         locData.setRestaurantLocation(new LatLng(lat, lng));
+        reviewsRecyclerAdapter.setReviewsList(restaurantDetails.getReviewList());
+        recyclerView.setAdapter(reviewsRecyclerAdapter);
+    }
+
+    private void setUpRestaurantReviewsList(View v) {
+        recyclerView = (RecyclerView) v.findViewById(R.id.reviews_recycler);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mActivity);
+        recyclerView.setLayoutManager(layoutManager);
+        reviewsRecyclerAdapter = new ReviewsRecyclerAdapter(mActivity);
     }
 
 }
