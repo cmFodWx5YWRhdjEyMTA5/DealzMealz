@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\4e03a00bd56c0157e24eb69c0b30afa6\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b12cd9c87c3dfb012a911b6e38d2444ed0a65e1f">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\play-services-base-11.0.4.aar\2266579ca8020ac01fa1cf1994581ce4\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.0.4.aar\ce6353eae4a8a95879d457a3c5aba090\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed87ccdcb70c17d71ba4e6e4ac16afa62d3c49fb">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\805dd90b09b4278b2822415b748a8263\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a37fc31c5ceeaa4532a37358add1b189d8db4af1">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\2ae9df5713e71fc4b35c3cfbcbf81fb8\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-11.0.4.aar\4697603992d68e0fa1db64f31e1ac0f1\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0bffdc0bd4f7ca0e27c5bfeef39569f8da00aa26">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.android.support.constraint\constraint-layout-solver\1.0.2\b9cd8fc6bd15cb915735d34535db30ece0c44603\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\05a834c818f34b9a7e4c8e23b5455331\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\490de5a97b88224816d5cbcedf0b410e\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\35.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\firebase-common-11.0.4.aar\78ee17f3810b6b5e68072b00ce2538f4\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="43e9789bd3240271265ab30ce1be9f224843f5a8">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\5f10f66813d0fbb1bcc23cd66d22758d\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.8.0\5a11f020cce2d11eb71ba916700600e18c4547e7\okhttp-3.8.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\abc48b68213598a2ff9fd53d86157f52\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.3.0\bcacde6a8ccedcc56c127403d26b76072fe6214d\retrofit-2.3.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bcacde6a8ccedcc56c127403d26b76072fe6214d">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\931ece7da2f83fc0e77b6fd161edbd98\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b4d6fbbb48b42dd03fd9c5a09b3b7a53266df6ed">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\play-services-drive-11.0.4.aar\a38f605cf928c0b634a4df7d9ee467f1\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="02b91f8efa91dcdf5c555ee24b7f006f02cd0f8b">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\6a0fb35504f0ace0d71303182f6d47c2\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\40.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\library-1.9.0.aar\cdc3d9129497f15bab6189a3ef38747a\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d25ab9baae8856b6cff4a1440917db20229ec2dd">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\41.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.0.4.aar\4e1e57daab4d3544aa3eb175d16e1636\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f47f4d5bdfd7d7bf330945b8a7ccce4ab437a710">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\fc44e857bc912a0615f394e672063082\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\library-1.1.1.aar\af90663846f737d35b9435292b404063\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c90637d130f250d652122daaaa95eeb725e6e3c5">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\9cef7b2ccbcefa47b3e3341189b307b2\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\firebase-auth-11.0.4.aar\17af98c0e71345fa63107137cbf4be9f\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b5b6af36bacf1d812cd3dc45f9dcab9ea471ed91">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\4746ade1011a8f80077dcd104cc237d0\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.0.4.aar\1a2b6289b3dc47ab14c4eecd8fe20f06\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fcae52a60bc07924d370b4d376116cd8f8581f54">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.0.4.aar\b9b5f40b48af424f7b8ea14ba3be1936\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.0.4.aar\2efab47d6111f268e3ba54fca5bbcfc3\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.1.0\814258103cf26a15fcc26ecce35f5b7d24b73f8\support-annotations-26.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.0.0.aar\5605f965c98acaf06c8c04fa8fc03268\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\b4f0e6d7b461e97066d550524dddcbaf\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4604f5a6ac7e2ef2d1adfc8ea70b2748\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\play-services-auth-11.0.4.aar\95f09f5ddf89b8d7183a9907e17e0ec1\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f5ff5e3811e8c9485fd27f9052ae4d4d23a22d9d">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.0.4.aar\877fd1685df498a59fd42d0180e40cd5\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e5b429c146094a612134910688d169ec08deeefb">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.0.4.aar\04068dd4b1121c48a3f0bfe515934ea8\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e1625e48a836779b5fa141d22e5d05563aaccc9a">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0\e414a4cb28434e25c4f6aa71426eb20cf4874ae9\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.3.0\9e09011e9767bb76b5e27c9b8223476b93b14631\converter-gson-2.3.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9e09011e9767bb76b5e27c9b8223476b93b14631">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\3c98b9162d7f1cd8d0d88a70c89a6a35\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="58b12bdb21a84f22e0dc3b047aeceb0a546b1b44">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\SKarwatkar\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\Aish\Marketing\DealsandMeals\Git Code\DealzMealz\app\build\intermediates\transforms\preDex\release\8.jar" />
+    </item>
+
+</items>

@@ -87,9 +87,8 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder implements OnM
         latitude = Double.parseDouble(listingModel.getLatitude());
         longitude = Double.parseDouble(listingModel.getLongitude());
         locData = new NamedLocation(new LatLng(latitude, longitude));
+        //hotelAddressTextView.setText(latitude+","+longitude);
         initializeMapView();
-
-
     }
 
     @Override

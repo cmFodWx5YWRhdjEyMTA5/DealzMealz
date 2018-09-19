@@ -1,17 +1,17 @@
 package com.restaurant.dealznmealz.network;
 
+import com.restaurant.dealznmealz.model.BookATableResponse;
 import com.restaurant.dealznmealz.model.CategoryModel;
 import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.model.DiscountedHotels;
 import com.restaurant.dealznmealz.model.HotDealzOffers;
 import com.restaurant.dealznmealz.model.ListingModel;
 import com.restaurant.dealznmealz.model.PaidBanners;
+import com.restaurant.dealznmealz.model.PostAndroidTokenResponse;
 import com.restaurant.dealznmealz.model.RegistrationResponse;
 import com.restaurant.dealznmealz.model.RestaurantDetails;
-import com.restaurant.dealznmealz.model.ReviewsModel;
 import com.restaurant.dealznmealz.model.SearchLocationModel;
-
-import org.json.JSONArray;
+import com.restaurant.dealznmealz.model.AddReviewResponse;
 
 import java.util.List;
 import java.util.Map;
@@ -69,7 +69,7 @@ public interface RetrofitNetworkManagerService {
     @GET("?latest=1")
     Call<List<ListingModel>> getLatestListingData();
 
-    @GET("?latest=1")
+    @GET("?offdetails=1")
     Call<List<ListingModel>> getHotDealzListingData(@Query("offid") int offerId);
 
     @GET("?discdetails=1")
@@ -80,5 +80,19 @@ public interface RetrofitNetworkManagerService {
 
     @GET("?offrestdisc=1")
     Call<Object> getRestaurantDetails(@Query("restid") String restId);
+
+    /* Book Table API call */
+    @GET("?bookatable=1")
+    Call<BookATableResponse> postBookTableData(@QueryMap Map<String, String> restroBookingData);
+
+    /* Add Review call */
+    @GET("?addreview=1")
+    Call<AddReviewResponse> addReviewForRestaurant(@QueryMap Map<String, String> addReviewData);
+
+    /* Add Android Token call*/
+    @GET("?addappcode=1")
+    Call<PostAndroidTokenResponse> postAndroidTokenData(@QueryMap Map<String, String> addTokenData);
+
+
 
 }

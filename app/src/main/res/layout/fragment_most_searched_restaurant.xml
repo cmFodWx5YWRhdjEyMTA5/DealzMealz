@@ -13,12 +13,12 @@
 
         <include layout="@layout/viewpager_menu" />
 
-<!--        <ImageView
-            android:id="@+id/list_banner_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />-->
+        <!--        <ImageView
+                    android:id="@+id/list_banner_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />-->
 
-        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

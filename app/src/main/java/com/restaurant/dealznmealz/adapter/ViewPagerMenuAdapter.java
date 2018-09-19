@@ -31,9 +31,13 @@ public class ViewPagerMenuAdapter extends PagerAdapter {
     private ArrayList<String> bannerImageUrl;
 
     public ViewPagerMenuAdapter(Context context) {
-        this.context = context;
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        bannerImageUrl = new ArrayList<>();
+        try {
+            this.context = context;
+            layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            bannerImageUrl = new ArrayList<>();
+        } catch (Exception ex){
+
+        }
     }
 
     public void setPaidBannersListData(List<PaidBanners> listData) {
@@ -64,33 +68,39 @@ public class ViewPagerMenuAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View itemView = layoutInflater.inflate(R.layout.viewpager_menu_item, container, false);
+        try {
+            View itemView = layoutInflater.inflate(R.layout.viewpager_menu_item, container, false);
 
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
 //        imageView.setBackgroundResource(images[position]);
 
-        String imageUrl = "https://dealznmealz.com/" + bannerImageUrl.get(position);
+            String imageUrl = "https://dealznmealz.com/" + bannerImageUrl.get(position);
 
-        Log.v("ViewPagerAdapter", "Image Url - "+imageUrl);
-        Picasso.with(context).load(imageUrl).into(imageView);
+            Log.v("ViewPagerAdapter", "Image Url - " + imageUrl);
+            Picasso.with(context).load(imageUrl).into(imageView);
 
-        Log.v("ViewPagerAdapter", "instantiateItem");
+            Log.v("ViewPagerAdapter", "instantiateItem");
 
-        container.addView(itemView);
+            container.addView(itemView);
 
-        if (paidBannerListData != null) {
-            final String restId = String.valueOf(paidBannerListData.get(position).getPaidHotelRestoId());
-            Log.v("View Pager", "Restro Id - "+restId);
-            //listening to image click
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToHotelDetailsActivity("PAID", restId);
-                }
-            });
+            if (paidBannerListData != null) {
+                final String restId = String.valueOf(paidBannerListData.get(position).getPaidHotelRestoId());
+                Log.v("View Pager", "Restro Id - " + restId);
+                //listening to image click
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        navigateToHotelDetailsActivity("PAID", restId);
+                    }
+                });
+            }
+
+            return itemView;
         }
-
-        return itemView;
+        catch(Exception ex)
+        {
+            return null;
+        }
     }
 
     @Override

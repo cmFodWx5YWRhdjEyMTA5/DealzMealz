@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="me.zhanghai.android.materialratingbar:library-1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.1.1.aar/af90663846f737d35b9435292b404063/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.1.1.aar/af90663846f737d35b9435292b404063/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.zhanghai.android.materialratingbar/library/1.1.1/f0899274bec46b2921785d06b1500586b6060227/library-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

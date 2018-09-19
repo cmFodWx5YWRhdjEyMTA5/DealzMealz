@@ -25,6 +25,12 @@
 
     </LinearLayout>
 
+    <!--TextView
+        android:id="@+id/textViewToken"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" /-->
+
     <LinearLayout
         android:id="@+id/offers_layout"
         android:layout_width="match_parent"
@@ -86,15 +92,18 @@
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/restaurant_dish1" />
+                    android:background="@drawable/mostsearched"
+                    android:gravity="center"/>
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Most Searched Resto View More"
+                    android:text="Most Searched Restro"
                     android:textSize="7sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"/>
 
                 <View
                     android:layout_width="100dp"
@@ -115,15 +124,16 @@
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/restaurant_dish1" />
+                    android:background="@drawable/mostreviwed" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Most Revieved Resto View More"
+                    android:text="Most Revieved Restro"
                     android:textSize="7sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
 
                 <View
                     android:layout_width="100dp"
@@ -144,20 +154,22 @@
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/restaurant_dish1" />
+                    android:background="@drawable/latest" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="Latest Resto View More"
-                    android:textStyle="bold"
-                    android:textSize="10sp" />
+                    android:text="Latest Resto"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
+
                 <View
                     android:layout_width="100dp"
                     android:layout_height="2dp"
-                    android:background="@android:color/holo_orange_dark"
-                    android:layout_marginTop="1dp"/>
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/holo_orange_dark" />
             </LinearLayout>
 
         </LinearLayout>

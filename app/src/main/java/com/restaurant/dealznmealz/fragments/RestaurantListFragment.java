@@ -49,7 +49,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 
     private ViewPager viewPager;
     private ImageView bannerImage;
-    private int images[] = {R.drawable.restaurant_dish1, R.drawable.restaurant_dish2};
+    private int images[] = {R.drawable.mostreviwed, R.drawable.mostreviwed};
     private ViewPagerMenuAdapter restaurantPagerAdapter;
     private String fragmentTitleKey = "FRAGMENT_TITLE_KEY";
     private String fragmentIdentifierKey = "FRAGMENT_IDENTIFIER";
@@ -94,7 +94,8 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-         super.onCreateView(inflater, container, savedInstanceState);
+        try {
+        super.onCreateView(inflater, container, savedInstanceState);
 
         View v = (View) inflater.inflate(R.layout.fragment_most_searched_restaurant, container, false);
 
@@ -104,25 +105,36 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 //        setUpBannerImage(v);
         setUpRestaurantList(v);
         return v;
+        }
+        catch(Exception ex) {return null;}
     }
 
     @Override
     public void onResume() {
-        super.onResume();
-        loadPaidBannerData();
-        loadRestaurantListData();
+        try {
+            super.onResume();
+            loadPaidBannerData();
+            loadRestaurantListData();
+        }
+        catch(Exception ex) {}
     }
 
     @Override
     public void onPause() {
+        try {
         super.onPause();
         stopViewPagerAnimation();
+        }
+        catch(Exception ex) {}
     }
 
     private void setUpViewPagerMenu(View v) {
+        try {
         viewPager = (ViewPager) v.findViewById(R.id.viewPager);
 
         restaurantPagerAdapter = new ViewPagerMenuAdapter(mActivity);
+        }
+        catch(Exception ex) {}
     }
 
     private void loadPaidBannerData() {
@@ -147,29 +159,35 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
     }
 
     private void animateViewPager() {
+        try {
         /*After setting the adapter use the timer */
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == restaurantPagerAdapter.getCount() - 1) {
-                    currentPage = 0;
+            final Handler handler = new Handler();
+            final Runnable Update = new Runnable() {
+                public void run() {
+                    if (currentPage == restaurantPagerAdapter.getCount() - 1) {
+                        currentPage = 0;
+                    }
+                    viewPager.setCurrentItem(currentPage++, true);
                 }
-                viewPager.setCurrentItem(currentPage++, true);
-            }
-        };
+            };
 
-        timer = new Timer(); // This will create a new Thread
-        timer.schedule(new TimerTask() { // task to be scheduled
+            timer = new Timer(); // This will create a new Thread
+            timer.schedule(new TimerTask() { // task to be scheduled
 
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, DELAY_MS, PERIOD_MS);
+                @Override
+                public void run() {
+                    handler.post(Update);
+                }
+            }, DELAY_MS, PERIOD_MS);
+        }
+        catch(Exception ex){}
     }
 
     private void stopViewPagerAnimation() {
+        try {
         timer.cancel();
+        }
+        catch(Exception ex){}
     }
 
     private void setUpRestaurantList(View v) {
@@ -205,7 +223,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantViewHo
 
             case "HOTDEALZ":
                 String hotDealzUrlCall = retrofitNetworkManagerService.getHotDealzListingData(offerId).request().url().toString();
-                Log.v(TAG, "Latest Restaurant Data Call : "+hotDealzUrlCall);
+                Log.v(TAG, "HOTDEALZ Restaurant Data Call : "+hotDealzUrlCall);
                 Call<List<ListingModel>> hotdealzDataCall = retrofitNetworkManagerService.getHotDealzListingData(offerId);
                 loadListingData(hotdealzDataCall);
                 break;

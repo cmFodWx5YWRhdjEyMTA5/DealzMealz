@@ -45,6 +45,18 @@
         android:paddingBottom="15dp"/>
 
     <EditText
+        android:id="@+id/userNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Re-Enter your mobile number"
+        android:inputType="number"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:paddingBottom="15dp"/>
+
+    <EditText
         android:id="@+id/emailInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,17 +80,6 @@
         android:backgroundTint="@android:color/white"
         android:paddingBottom="15dp"/>
 
-    <EditText
-        android:id="@+id/userNameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:hint="Enter preferred username"
-        android:inputType="text"
-        android:textColorHint="@android:color/white"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@android:color/white"
-        android:paddingBottom="15dp"/>
 
     <EditText
         android:id="@+id/passwordInput"
@@ -90,7 +91,8 @@
         android:textColorHint="@android:color/white"
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/white"
-        android:paddingBottom="15dp"/>
+        android:paddingBottom="15dp"
+        />
 
     <Button
         android:id="@+id/registerMe"

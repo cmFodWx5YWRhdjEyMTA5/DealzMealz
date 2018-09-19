@@ -75,19 +75,11 @@
                 android:layout_height="50dp"
                 map:liteMode="true"
                 map:mapType="none"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"/>
 
-            <TextView
-                android:layout_below="@id/hotel_map_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Find your way"
-                android:textSize="10sp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
+
 
         </RelativeLayout>
 
@@ -95,22 +87,31 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:gravity="center"
         android:layout_marginRight="5dp">
 
-<!--    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/hotel_reviews"
-        android:text="Reviews"
-        android:textSize="10sp"
-        android:textStyle="bold"/>-->
+        <TextView
+            android:id="@+id/hotel_reviews_count"
+            android:layout_width="37dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.7"
+            android:background="@drawable/custom_rectangle_green"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="0"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+
+
+        <!--me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialRatingBar.RatingBar.Small" />
@@ -122,7 +123,7 @@
         android:text="(45)"
         android:textStyle="bold"
         android:textSize="10sp"
-        android:layout_marginLeft="3dp"/>
+        android:layout_marginLeft="3dp"/-->
 
     </LinearLayout>
 

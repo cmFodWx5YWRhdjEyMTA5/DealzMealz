@@ -73,6 +73,7 @@ public class RestaurantListActivity extends DealznmealzBaseActivity {
             case "LATEST":
                 bundle.putString(fragmentTitleKey, "Latest Restaurants");
                 fragment.setArguments(bundle);
+                break;
 
             case "HOTDEALZ":
                 bundle.putString(fragmentTitleKey, "HOT Dealz Offer");

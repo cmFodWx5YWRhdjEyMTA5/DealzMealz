@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.pixplicity.easyprefs.library.Prefs;
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.Utils.Utils;
 import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.model.RegistrationResponse;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
@@ -58,9 +60,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         birthDateInput = findViewById(R.id.birthDateInput);
         userNameInput = findViewById(R.id.userNameInput);
         passwordInput = findViewById(R.id.passwordInput);
+        passwordInput.setVisibility(View.INVISIBLE);
+        passwordInput.setText("default123");
         registerMe = findViewById(R.id.registerMe);
-
         registerMe.setOnClickListener(this);
+        String userID = Prefs.getString(Utils.LOGGED_IN_USERID,"");
+        if(Prefs.getBoolean(Utils.IS_USER_LOGGED_OR_NOT,false) && userID.trim().length() > 0)
+        {
+            navigateToLoginScreen();
+        }
     }
 
     @Override
@@ -107,12 +115,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
                 Log.v(TAG, "Registration response : "+response.body().toString());
                 RegistrationResponse regResponse = response.body();
-                if (regResponse.getRegistrationResponse().equals("Registration Successfully Done. You can login now")) {
-                    Toast.makeText(SignUpActivity.this, "Registration Successful", Toast.LENGTH_LONG).show();
-                    navigateToLoginScreen();
-                } else {
-                    Toast.makeText(SignUpActivity.this, "Registration Unsuccessful", Toast.LENGTH_LONG).show();
-                }
+                Toast.makeText(SignUpActivity.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                Prefs.putString(Utils.LOGGED_IN_USERID,regResponse.getRegistrationResponse());
+                Prefs.putBoolean(Utils.IS_USER_LOGGED_OR_NOT, true);
+                navigateToLoginScreen();
+
             }
 
             @Override
@@ -123,7 +130,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void navigateToLoginScreen() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
     }

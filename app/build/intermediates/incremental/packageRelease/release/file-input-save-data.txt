@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Wed Sep 19 15:44:47 IST 2018
+0.baseType=DIRECTORY
+0.base=D\:\\Aish\\Marketing\\DealsandMeals\\Git Code\\DealzMealz\\app\\build\\intermediates\\transforms\\dex\\release\\0
+0.path=classes.dex
+0.set=DEX
+count=1

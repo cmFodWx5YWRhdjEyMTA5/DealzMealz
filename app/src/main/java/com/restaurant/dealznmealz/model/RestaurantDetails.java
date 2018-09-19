@@ -92,9 +92,22 @@ public class RestaurantDetails {
     @Expose
     private RestaurantDetailImages restaurantDetailImages;
 
+
+
+    @SerializedName("discount_percent")
+    @Expose
+    private String restaurantDiscountPercent;
+
+    @SerializedName("minimum_bill_amount")
+    @Expose
+    private String restaurantMinimumBillAmount;
+
     @SerializedName("reviews")
     @Expose
     private ArrayList<ReviewsModel> reviewList;
+
+
+
 
     public String getId() {
         return id;
@@ -240,6 +253,24 @@ public class RestaurantDetails {
         this.restaurantRating = restaurantRating;
     }
 
+    public String getRestaurantDiscountPercent() {
+        return restaurantDiscountPercent;
+    }
+
+    public void setRestaurantDiscountPercent(String restaurantDiscountPercent) {
+        this.restaurantDiscountPercent = restaurantDiscountPercent;
+    }
+
+    public String getRestaurantMinimumBillAmount() {
+        return restaurantMinimumBillAmount;
+    }
+
+    public void setRestaurantMinimumBillAmount(String restaurantMinimumBillAmount) {
+        this.restaurantMinimumBillAmount = restaurantMinimumBillAmount;
+    }
+
+
+
     public String getRestaurantPaidCategory() {
         return restaurantPaidCategory;
     }
@@ -263,4 +294,5 @@ public class RestaurantDetails {
     public void setReviewList(ArrayList<ReviewsModel> reviewList) {
         this.reviewList = reviewList;
     }
+
 }

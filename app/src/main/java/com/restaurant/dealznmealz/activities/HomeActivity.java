@@ -1,5 +1,7 @@
 package com.restaurant.dealznmealz.activities;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -26,11 +28,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.pixplicity.easyprefs.library.Prefs;
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.Utils.Utils;
 import com.restaurant.dealznmealz.adapter.HotDealzRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.OffersRecyclerViewAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
+import com.restaurant.dealznmealz.firebasecloudmessaging.SharedPrefManager;
 import com.restaurant.dealznmealz.interfaces.RecyclerViewClickListener;
 import com.restaurant.dealznmealz.listener.RecyclerViewTouchListener;
 import com.restaurant.dealznmealz.model.CategoryModel;
@@ -38,6 +44,7 @@ import com.restaurant.dealznmealz.model.DealzMealzUserDetails;
 import com.restaurant.dealznmealz.model.DiscountedHotels;
 import com.restaurant.dealznmealz.model.HotDealzOffers;
 import com.restaurant.dealznmealz.model.PaidBanners;
+import com.restaurant.dealznmealz.model.PostAndroidTokenResponse;
 import com.restaurant.dealznmealz.model.SearchLocationModel;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManager;
 import com.restaurant.dealznmealz.network.RetrofitNetworkManagerService;
@@ -45,8 +52,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.TreeMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,10 +97,14 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
 
     private List<DiscountedHotels> discountedHotelsList;
 
+    //private TextView textViewToken;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //textViewToken = (TextView) findViewById(R.id.textViewToken);
+
 
         mActivity = this;
 
@@ -104,8 +117,9 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         setToolBar();
         setUpOffersRecyclerView();
         setUpHotDealzView();
-        loadBottomTabImages();
+        //loadBottomTabImages();
         setUpSearchViewItems();
+        getNotificationToken();
     }
 
     @Override
@@ -113,6 +127,62 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         super.onPause();
         stopViewPagerAnimation();
     }
+
+
+    private void getNotificationToken() {
+        //getting token from shared preferences
+        String generatedToken  = Prefs.getString(Utils.GENERATED_TOKEN,"");
+        if(generatedToken.trim().length() == 0) {
+            String token = SharedPrefManager.getInstance(this).getDeviceToken();
+            if (token != null) {
+                postTokenDataToServer(token);
+            }
+        }
+
+
+        //if token is not null
+       /* if (token != null) {
+
+            //displaying the token
+            //textViewToken.setText(token);
+        } else {
+            //if token is null that means something wrong
+            //textViewToken.setText("Token not generated");
+        }*/
+
+        /*ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("label", token);
+        clipboard.setPrimaryClip(clip);*/
+    }
+
+
+
+    private void postTokenDataToServer(String token) {
+            Map<String, String> androidTokenData = new TreeMap<>();
+            androidTokenData.put("uid", Prefs.getString(Utils.LOGGED_IN_USERID,""));
+            androidTokenData.put("accesscode", token);
+            postUserRegistrationData(androidTokenData,token);
+    }
+
+    private void postUserRegistrationData(Map<String, String> androidTokenData, final String token) {
+        String registrationUrl = retrofitNetworkManagerService.postUserRegistrationData(androidTokenData).request().url().toString();
+        Call<PostAndroidTokenResponse> userDetailsCall = retrofitNetworkManagerService.postAndroidTokenData(androidTokenData);
+        userDetailsCall.enqueue(new Callback<PostAndroidTokenResponse>() {
+            @Override
+            public void onResponse(Call<PostAndroidTokenResponse> call, Response<PostAndroidTokenResponse> response) {
+                Log.v(TAG, "Registration response : "+response.body().toString());
+                PostAndroidTokenResponse regResponse = response.body();
+                Prefs.putString(Utils.GENERATED_TOKEN, token);
+            }
+            @Override
+            public void onFailure(Call<PostAndroidTokenResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
 
     private void setUpViewPagerMenu() {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -144,9 +214,9 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
         mostReviewedImageView = (ImageView) findViewById(R.id.mostReviewsImageView);
         latestRestroImageView = (ImageView) findViewById(R.id.latestRestroImageView);
 
-        Picasso.with(mActivity).load("https://dealznmealz.com/image/home1.jpg").into(mostSearchedImageView);
-        Picasso.with(mActivity).load("https://dealznmealz.com/image/home2.jpeg").into(mostReviewedImageView);
-        Picasso.with(mActivity).load("https://dealznmealz.com/image/home4.jpg").into(latestRestroImageView);
+        //Picasso.with(mActivity).load("https://dealznmealz.com/image/home1.jpg").into(mostSearchedImageView);
+        //Picasso.with(mActivity).load("https://dealznmealz.com/image/home2.jpeg").into(mostReviewedImageView);
+        //Picasso.with(mActivity).load("https://dealznmealz.com/image/home4.jpg").into(latestRestroImageView);
     }
 
     public void onMostSearchClicked(View view) {
@@ -313,7 +383,6 @@ public class HomeActivity extends DealznmealzBaseActivity implements OffersRecyc
     private void stopViewPagerAnimation() {
         timer.cancel();
     }
-
     private void setUpSearchViewItems() {
         searchByCategoryText = findViewById(R.id.search_category_tv);
         searchByPriceText = findViewById(R.id.search_price_tv);

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.restaurant.dealznmealz.R;
+import com.restaurant.dealznmealz.activities.HotelDetailsActivity;
 import com.restaurant.dealznmealz.activities.RestaurantListActivity;
 import com.restaurant.dealznmealz.adapter.RestaurantListRecyclerAdapter;
 import com.restaurant.dealznmealz.adapter.ViewPagerMenuAdapter;
@@ -24,17 +25,15 @@ import com.restaurant.dealznmealz.viewholder.RestaurantViewHolder;
 
 public class MostReviewsRestaurantListFragment extends Fragment implements RestaurantViewHolder.ItemClickListener {
 
-    private RestaurantListActivity mActivity;
+    private HotelDetailsActivity mActivity;
     private Context mContext;
 
-    private ViewPager viewPager;
-    private int images[] = {R.drawable.restaurant_dish1, R.drawable.restaurant_dish2};
-    private ViewPagerMenuAdapter restaurantPagerAdapter;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivity = (RestaurantListActivity) getActivity();
+        mActivity = (HotelDetailsActivity) getActivity();
         mContext = mActivity;
     }
 
@@ -47,17 +46,11 @@ public class MostReviewsRestaurantListFragment extends Fragment implements Resta
 
         TextView headerTextView = (TextView) v.findViewById(R.id.header_title);
         headerTextView.setText("Most Reviews Restaurants");
-        setUpViewPagerMenu(v);
         setUpRestaurantList(v);
         return v;
     }
 
-    private void setUpViewPagerMenu(View v) {
-        viewPager = (ViewPager) v.findViewById(R.id.viewPager);
 
-        restaurantPagerAdapter = new ViewPagerMenuAdapter(mActivity);
-        viewPager.setAdapter(restaurantPagerAdapter);
-    }
 
     private void setUpRestaurantList(View v) {
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.restaurant_list_recycler);

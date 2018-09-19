@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Aish\\Marketing\\DealsandMeals\\Git Code\\DealzMealz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-es-rES\\values-es-rES.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\SKarwatkar\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-android-sdk-4.0.0.aar\\5605f965c98acaf06c8c04fa8fc03268\\res\\values-es-rES\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "185",
+                        "endColumns": "61",
+                        "endOffsets": "242"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "61",
+                        "endOffsets": "112"
+                    }
+                }
+            ]
+        }
+    ]
+}

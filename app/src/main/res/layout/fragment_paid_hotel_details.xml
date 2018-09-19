@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
             android:layout_height="match_parent"
             android:visibility="visible">
 
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
@@ -34,9 +36,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pager"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:weightSum="1">
+                android:weightSum="1"
+                >
 
                 <TextView
                     android:id="@+id/txt_hotel_name"
@@ -52,9 +54,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="0.8"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/custom_rectangle_green"
                     android:gravity="center"
                     android:padding="5dp"
@@ -63,29 +65,109 @@
                     android:textSize="20sp" />
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/details_category_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hotel_name_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_hotel_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ramdaspeth,Nagpur"
+                    android:textSize="11dp" />
+
+
+                <TextView
+                    android:id="@+id/txt_hotel_category_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CASUAL DINING"
+                    android:textSize="11dp"
+                    />
+            </LinearLayout>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/seprator_hotelname"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/separator_line"
+                android:layout_below="@+id/details_category_layout"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/details_discount_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seprator_hotelname"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_discount_per"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Discount: 30%"
+                    android:textSize="21dp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/txt_min_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="* Discount available on minimum billing Rs:300"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorGreen"
+                    />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"
+                />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/seprator_hoteldiscount"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/separator_line"
+                android:layout_below="@+id/details_discount_layout"></LinearLayout>
 
             <TextView
                 android:id="@+id/txt_hotel_opening_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/hotel_name_layout"
+                android:layout_below="@+id/seprator_hoteldiscount"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/hotel_open_hours"
-                android:textSize="21sp"
-                android:textStyle="bold" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                />
 
             <TextView
                 android:id="@+id/txt_hotel_opening_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/hotel_name_layout"
+                android:layout_below="@+id/seprator_hoteldiscount"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:layout_toRightOf="@+id/txt_hotel_opening_hours"
                 android:text="@string/hotel_open_now"
                 android:textColor="@color/colorGreen"
-                android:textSize="21sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/txt_hotel_morningtime"
@@ -95,7 +177,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/hotel_morning_hours"
-                android:textSize="19sp" />
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/txt_hotel_timing"
@@ -106,7 +188,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/txt_hotel_morningtime"
                 android:text="@string/hotel_timing"
-                android:textSize="19sp" />
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/txt_hotel_eveningtime"
@@ -116,7 +198,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/hotel_evening_hours"
-                android:textSize="19sp" />
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/txt_hotel_evening_value"
@@ -127,50 +209,60 @@
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/txt_hotel_eveningtime"
                 android:text="@string/hotel_timing"
-                android:textSize="19sp" />
+                android:textSize="11sp"
+                />
 
-            <TextView
-                android:id="@+id/txt_hotel_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_hotel_eveningtime"
-                android:layout_marginLeft="10dp"
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/seprator_openinghrs"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/hotel_details"
-                android:textSize="21sp"
-                android:textStyle="bold" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/separator_line"
+                android:layout_below="@+id/txt_hotel_eveningtime"></LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:background="#c0c0c0"/>
 
             <LinearLayout
                 android:id="@+id/details_call_booktable_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_hotel_details"
+                android:layout_below="@+id/seprator_openinghrs"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2"
+                >
 
                 <LinearLayout
-                    android:id="@+id/details_call_layout"
+                    android:id="@+id/details_booktext_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <TextView
-                        android:id="@+id/txt_hotel_call"
+                        android:id="@+id/txt_to_book_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/hotel_call_text"
-                        android:textSize="19sp" />
+                        android:text="To avail offer"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_phone_no"
+                        android:id="@+id/txt_to_offer_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="966775599"
-                        android:textSize="17dp" />
+                        android:text="Book A Table Now"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -179,7 +271,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <Button
                         android:id="@+id/book_table"
@@ -188,21 +281,144 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/custom_rectangle_green"
-                        android:text="Book Table"
+                        android:text="Book A Table"
                         android:textColor="@color/colorWhite"
-                        android:textSize="8dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/seprator_bookatable"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/separator_line"
+                android:layout_below="@+id/details_call_booktable_layout"></LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"/>
+
+            <TextView
+                android:id="@+id/txt_rate_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seprator_bookatable"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Share Your Rating/Review with Us"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/rate_review_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_rate_us"
+                android:layout_marginLeft="10dp"
+                android:gravity="left"
+                android:weightSum="0.5">
+
+
+                <Button
+                    android:id="@+id/hotel_rating1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/custom_rectangle_gray"
+                    android:padding="2dp"
+                    android:text="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/hotel_rating2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/custom_rectangle_gray"
+                    android:padding="2dp"
+                    android:text="2"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/hotel_rating3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/custom_rectangle_gray"
+                    android:padding="2dp"
+                    android:text="3"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    />
+
+                <Button
+                    android:id="@+id/hotel_rating4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/custom_rectangle_gray"
+                    android:padding="2dp"
+                    android:text="4"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/hotel_rating5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/custom_rectangle_gray"
+                    android:padding="2dp"
+                    android:text="5"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/seprator_ratereview"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/separator_line"
+                android:layout_below="@+id/rate_review_layout"></LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#000"/>
+
             <LinearLayout
                 android:id="@+id/hotel_address_maps_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/details_call_booktable_layout"
+                android:layout_below="@+id/seprator_ratereview"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -212,6 +428,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_hotel_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/hotel_details"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_hotel_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hotel_call_text"
+                        android:textSize="19sp"
+                        android:autoLink="phone"/>
+
+                    <TextView
+                        android:id="@+id/txt_phone_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="966775599"
+                        android:textSize="17dp" />
 
                     <TextView
                         android:id="@+id/txt_hotel_address_text"
@@ -240,36 +481,21 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/details_category_layout"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/seprator_hoteldetail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/hotel_address_maps_layout"
-                android:layout_marginLeft="10dp"
+                android:layout_height="12dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/txt_hotel_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hotel_category_text"
-                    android:textSize="19sp" />
-
-                <TextView
-                    android:id="@+id/txt_hotel_category_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CASUAL DINING"
-                    android:textSize="17dp" />
-            </LinearLayout>
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/separator_line"
+                android:layout_below="@+id/hotel_address_maps_layout"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/details_reviews_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/details_category_layout"
+                android:layout_below="@+id/seprator_hoteldetail"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
@@ -280,7 +506,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hotel_reviews_text"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/reviews_recycler"
